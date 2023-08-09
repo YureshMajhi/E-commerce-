@@ -25,24 +25,26 @@ const Navbar = () => {
                 Formerly Alice + Whittles
               </p>
             </div>
+
             {/* Menu */}
-            <ul className="hidden lg:flex font-light text-base text-gray-700">
-              <li className="p-4 hover:underline hover:text-black hover:font-normal">
+            <ul className="hidden lg:flex font-light text-sm text-gray-700">
+              <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
                 New In
               </li>
-              <li className="p-4 hover:underline hover:text-black hover:font-normal">
+              <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
                 Bestsellers
               </li>
-              <li className="p-4 hover:underline hover:text-black hover:font-normal">
+              <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
                 Weekend Boot
               </li>
-              <li className="p-4 hover:underline hover:text-black hover:font-normal">
+              <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
                 Pricing
               </li>
-              <li className="p-4 hover:underline hover:text-black hover:font-normal">
+              <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
                 Shop All
               </li>
             </ul>
+
             {/* Hamburger */}
             <div
               className="lg:hidden absolute top-[10px] left-[-40px] text-2xl"
@@ -51,6 +53,7 @@ const Navbar = () => {
               {nav ? <RxHamburgerMenu /> : <RxCross2 />}
             </div>
           </div>
+
           {/* Actions */}
           <div className="flex items-center text-[1.3rem]">
             <button className="m-3 hover:scale-125">
@@ -65,6 +68,8 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* SideBar */}
       <Sidebar nav={nav} handleClick={handleClick} />
     </>
   );
