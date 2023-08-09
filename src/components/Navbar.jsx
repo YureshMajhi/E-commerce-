@@ -6,6 +6,8 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
 import "../App.css";
 import Sidebar from "./Sidebar";
+import Info from "./Info";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [nav, setNav] = useState(true);
@@ -15,12 +17,15 @@ const Navbar = () => {
   };
   return (
     <>
+      <Info />
       <div className="sticky top-0 z-50 bg-white">
         <div className="flex justify-between max-w-[1400px] mx-auto px-16 py-8 ">
           <div className="flex items-center relative">
             {/* Title */}
             <div className="mr-14">
-              <h1 className="font-[Stylish] text-4xl">Yurush</h1>
+              <h1 className="font-[Stylish] text-4xl">
+                <Link to="/">Yurush</Link>
+              </h1>
               <p className="text-[.6rem] text-center font-medium text-gray-700">
                 Formerly Alice + Whittles
               </p>
@@ -29,19 +34,19 @@ const Navbar = () => {
             {/* Menu */}
             <ul className="hidden lg:flex font-light text-sm text-gray-700">
               <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
-                New In
+                <Link to="/newIn">New In</Link>
               </li>
               <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
-                Bestsellers
+                <Link to="bestsellers">Bestsellers</Link>
               </li>
               <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
-                Weekend Boot
+                <Link to="weekendBoot">Weekend Boot</Link>
               </li>
               <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
-                Pricing
+                <Link to="pricing">Pricing</Link>
               </li>
               <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
-                Shop All
+                <Link to="shopAll">Shop All</Link>
               </li>
             </ul>
 

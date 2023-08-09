@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ nav, handleClick }) => {
   return (
@@ -18,19 +19,19 @@ const Sidebar = ({ nav, handleClick }) => {
           ${nav ? "translate-x-[-100%] duration-300" : "translate-x-0"}`}
       >
         <li onClick={handleClick} className="py-4 pl-6 my-1 hover:bg-gray-200">
-          New In
+          <Link to="/newIn">New In</Link>
         </li>
         <li onClick={handleClick} className="py-4 pl-6 my-1 hover:bg-gray-200">
-          Best Sellers
+          <Link to="bestsellers">Bestsellers</Link>
         </li>
         <li onClick={handleClick} className="py-4 pl-6 my-1 hover:bg-gray-200">
-          Weekend Boot
+          <Link to="weekendBoot">Weekend Boot</Link>
         </li>
         <li onClick={handleClick} className="py-4 pl-6 my-1 hover:bg-gray-200">
-          Pricing
+          <Link to="pricing">Pricing</Link>
         </li>
         <li onClick={handleClick} className="py-4 pl-6 my-1 hover:bg-gray-200">
-          Shop All
+          <Link to="shopAll">Shop All</Link>
         </li>
       </ul>
     </>
