@@ -19,100 +19,98 @@ const Footer = () => {
   return (
     <>
       <div className="bg-[#084240] text-white">
-        <div>
-          <div className="flex md:flex-row flex-col max-w-[80rem] mx-auto p-10">
-            <div className="grow basis-0">
-              <p className="font-[Stylish] text-4xl">Yurush</p>
-              <p className="my-10 text-lg font-semibold tracking-wide">
-                Socially and environmentally progressive outdoor footwear
-              </p>
-              <div className="flex text-xl">
-                <CiFacebook className="mr-4 hover:scale-125" />
-                <CiInstagram className="mr-4 hover:scale-125" />
-                <CiLinkedin className="mr-4 hover:scale-125" />
-                <TbBrandPinterest className="mr-4 hover:scale-125" />
-              </div>
-            </div>
-            <div className="grow basis-0">
-              <h3 className="font-semibold my-4 ">Our Shop</h3>
-              <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
-                All Products
-              </p>
-              <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
-                The Weekend Boot
-              </p>
-              <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
-                The Winter Weekend Boot Z
-              </p>
-              <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
-                The Terrus
-              </p>
-              <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
-                Accessories
-              </p>
-            </div>
-            <div className="grow basis-0">
-              <h3 className="font-semibold my-4 ">Help</h3>
-              <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
-                Size guide
-              </p>
-              <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
-                Shipping Information
-              </p>
-              <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
-                Refund Policy
-              </p>
-              <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
-                Wear and Care FAQ
-              </p>
-            </div>
-            <div className="grow basis-0">
-              <h3 className="font-semibold my-4 ">About us</h3>
-              <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
-                Values
-              </p>
-              <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
-                Contact Us
-              </p>
+        <div className="flex md:flex-row flex-col max-w-[80rem] mx-auto p-10">
+          <div className="grow basis-0">
+            <p className="font-[Stylish] text-4xl">Yurush</p>
+            <p className="my-10 text-lg font-semibold tracking-wide">
+              Socially and environmentally progressive outdoor footwear
+            </p>
+            <div className="flex text-xl">
+              <CiFacebook className="mr-4 hover:scale-125" />
+              <CiInstagram className="mr-4 hover:scale-125" />
+              <CiLinkedin className="mr-4 hover:scale-125" />
+              <TbBrandPinterest className="mr-4 hover:scale-125" />
             </div>
           </div>
+          <div className="grow basis-0">
+            <h3 className="font-semibold my-4 ">Our Shop</h3>
+            <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
+              All Products
+            </p>
+            <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
+              The Weekend Boot
+            </p>
+            <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
+              The Winter Weekend Boot Z
+            </p>
+            <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
+              The Terrus
+            </p>
+            <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
+              Accessories
+            </p>
+          </div>
+          <div className="grow basis-0">
+            <h3 className="font-semibold my-4 ">Help</h3>
+            <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
+              Size guide
+            </p>
+            <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
+              Shipping Information
+            </p>
+            <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
+              Refund Policy
+            </p>
+            <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
+              Wear and Care FAQ
+            </p>
+          </div>
+          <div className="grow basis-0">
+            <h3 className="font-semibold my-4 ">About us</h3>
+            <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
+              Values
+            </p>
+            <p className="text-gray-300 py-2 text-sm hover:underline hover:text-white cursor-pointer">
+              Contact Us
+            </p>
+          </div>
         </div>
+
+        {/* Line */}
         <hr className="border-0 h-px bg-gray-600" />
+
+        {/* Final Section */}
         <div>
           <div className="flex justify-center gap-4 pt-14">
             <img
               src={circles}
-              alt="circle photo"
+              alt="circle card"
               className="h-[25px] bg-white p-1"
             />
             <img
               src={americanExpress}
-              alt="circle photo"
+              alt="american express card"
               className="h-[25px] bg-white p-1"
             />
             <img
               src={payPal}
-              alt="circle photo"
+              alt="paypal card"
               className="h-[25px] bg-white p-1"
             />
             <img
               src={googlePay}
-              alt="circle photo"
+              alt="google pay card"
               className="h-[25px] bg-white p-1"
             />
-            <img
-              src={visa}
-              alt="circle photo"
-              className="h-[25px] bg-white p-1"
-            />
+            <img src={visa} alt="visa card" className="h-[25px] bg-white p-1" />
             <img
               src={Discover}
-              alt="circle photo"
+              alt="discover card"
               className="h-[25px] bg-white p-1"
             />
             <img
               src={applePay}
-              alt="circle photo"
+              alt="apple pay card"
               className="h-[25px] bg-white p-1"
             />
           </div>
