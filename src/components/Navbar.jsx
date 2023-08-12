@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+// Icons
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { VscAccount } from "react-icons/vsc";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
+
 import "../App.css";
 import Sidebar from "./Sidebar";
 import Info from "./Info";
@@ -12,6 +15,23 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [nav, setNav] = useState(true);
 
+  // Set title size
+  const [bigFont, setBigFont] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    if (window.scrollY > 200) {
+      setBigFont(false);
+    } else {
+      setBigFont(true);
+    }
+  };
+
   const handleClick = () => {
     setNav(!nav);
   };
@@ -19,14 +39,22 @@ const Navbar = () => {
     <>
       <Info />
       <div className="sticky top-0 z-50 bg-white">
-        <div className="flex justify-between max-w-[1400px] mx-auto px-16 py-8 ">
+        <div className="flex justify-between max-w-[1400px] mx-auto pl-16 pr-4 py-8 ">
           <div className="flex items-center relative">
             {/* Title */}
-            <div className="mr-14">
-              <h1 className="font-[Stylish] text-4xl">
+            <div className="mr-14 text-[#084240]">
+              <h1
+                className={`font-[Stylish] duration-300 ${
+                  bigFont ? "text-5xl" : "text-4xl"
+                }`}
+              >
                 <Link to="/">Yurush</Link>
               </h1>
-              <p className="text-[.6rem] text-center font-medium text-gray-700">
+              <p
+                className={` ${
+                  bigFont ? "text-[.8rem]" : "text-[.6rem]"
+                }  duration-300 text-center font-medium text-gray-700`}
+              >
                 Formerly Alice + Whittles
               </p>
             </div>
@@ -73,7 +101,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
       {/* SideBar */}
       <Sidebar nav={nav} handleClick={handleClick} />
     </>
