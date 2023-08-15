@@ -8,7 +8,7 @@ const CallToAction = () => {
   return (
     <>
       <div className="bg-[#f3f3f3] mt-10">
-        <h3 className="text-center text-5xl py-10 text-[#084240]">
+        <h3 className="text-center text-3xl md:text-5xl py-10 text-[#084240]">
           Let's stay in touch!
         </h3>
         <p className="text-center text-[#596e67] max-w-xl mx-auto">
@@ -16,7 +16,10 @@ const CallToAction = () => {
           outdoor tips, trips and education.
         </p>
 
-        <form onSubmit={handleSubmit} className="py-10 flex justify-center">
+        <form
+          onSubmit={handleSubmit}
+          className="py-10 px-14 flex justify-center"
+        >
           <input
             type="email"
             placeholder="Your e-mail"
