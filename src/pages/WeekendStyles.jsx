@@ -25,7 +25,7 @@ const WeekendStyles = () => {
           <img
             src={weekendStyles}
             alt="New In Image"
-            className="hidden sm:block h-[20vh] md:h-[30vh] lg:h-[40vh] xl:h-[50vh] w-full max-w-[1500px] mx-auto object-cover object-top"
+            className="hidden sm:block h-[20vh] md:h-[30vh] lg:h-[40vh] lg:object-bottom w-full max-w-[1500px] mx-auto object-cover object-top"
           />
         </div>
 
