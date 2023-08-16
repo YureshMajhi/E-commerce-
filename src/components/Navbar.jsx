@@ -14,6 +14,34 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [nav, setNav] = useState(true);
+  const handleClick = () => {
+    setNav(!nav);
+  };
+
+  const [menuClick, setMenuClick] = useState("");
+  const handleMenuClick = (menuItem) => {
+    switch (menuItem) {
+      case "":
+        setMenuClick("");
+        break;
+
+      case "newIn":
+        setMenuClick("newIn");
+        break;
+      case "bestsellers":
+        setMenuClick("bestsellers");
+        break;
+      case "weekendStyles":
+        setMenuClick("weekendStyles");
+        break;
+      case "pricing":
+        setMenuClick("pricing");
+        break;
+      case "shopAll":
+        setMenuClick("shopAll");
+        break;
+    }
+  };
 
   // Set title size
   const [bigFont, setBigFont] = useState(false);
@@ -24,6 +52,7 @@ const Navbar = () => {
     };
   }, []);
 
+  // Heading size animation
   const handleScroll = () => {
     if (window.scrollY > 200) {
       setBigFont(false);
@@ -32,9 +61,6 @@ const Navbar = () => {
     }
   };
 
-  const handleClick = () => {
-    setNav(!nav);
-  };
   return (
     <>
       <Info />
@@ -48,7 +74,9 @@ const Navbar = () => {
                   bigFont ? "text-5xl" : "text-4xl"
                 }`}
               >
-                <Link to="/">Yurush</Link>
+                <Link onClick={() => handleMenuClick("")} to="/">
+                  Yurush
+                </Link>
               </h1>
               <p
                 className={` ${
@@ -61,20 +89,64 @@ const Navbar = () => {
 
             {/* Menu */}
             <ul className="hidden lg:flex font-light text-sm text-gray-700">
-              <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
-                <Link to="/newIn">New In</Link>
+              <li
+                className={`p-4 tracking-wide hover:underline hover:text-black hover:font-normal ${
+                  menuClick == "newIn" ? "font-normal text-black underline" : ""
+                }`}
+              >
+                <Link onClick={() => handleMenuClick("newIn")} to="/newIn">
+                  New In
+                </Link>
               </li>
-              <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
-                <Link to="bestsellers">Bestsellers</Link>
+              <li
+                className={`p-4 tracking-wide hover:underline hover:text-black hover:font-normal ${
+                  menuClick == "bestsellers"
+                    ? "font-normal text-black underline"
+                    : ""
+                }`}
+              >
+                <Link
+                  onClick={() => handleMenuClick("bestsellers")}
+                  to="bestsellers"
+                >
+                  Bestsellers
+                </Link>
               </li>
-              <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
-                <Link to="weekendBoot">Weekend Boot</Link>
+              <li
+                className={`p-4 tracking-wide hover:underline hover:text-black hover:font-normal ${
+                  menuClick == "weekendStyles"
+                    ? "font-normal text-black underline"
+                    : ""
+                }`}
+              >
+                <Link
+                  onClick={() => handleMenuClick("weekendStyles")}
+                  to="weekendStyles"
+                >
+                  Weekend Styles
+                </Link>
               </li>
-              <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
-                <Link to="pricing">Pricing</Link>
+              <li
+                className={`p-4 tracking-wide hover:underline hover:text-black hover:font-normal ${
+                  menuClick == "pricing"
+                    ? "font-normal text-black underline"
+                    : ""
+                }`}
+              >
+                <Link onClick={() => handleMenuClick("pricing")} to="pricing">
+                  Pricing
+                </Link>
               </li>
-              <li className="p-4 tracking-wide hover:underline hover:text-black hover:font-normal">
-                <Link to="shopAll">Shop All</Link>
+              <li
+                className={`p-4 tracking-wide hover:underline hover:text-black hover:font-normal ${
+                  menuClick == "shopAll"
+                    ? "font-normal text-black underline"
+                    : ""
+                }`}
+              >
+                <Link onClick={() => handleMenuClick("shopAll")} to="shopAll">
+                  Shop All
+                </Link>
               </li>
             </ul>
 

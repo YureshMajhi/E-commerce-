@@ -1,6 +1,7 @@
 import React from "react";
 import yurushStore from "../assets/Images/Yurush Store.png";
 import { BsArrowRight } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -13,7 +14,7 @@ const HomePage = () => {
           className="md:h-[60vh] lg:h-[75vh] h-[40vh] w-full max-w-[1500px] mx-auto object-cover"
         />
         <button className="absolute text-lg bottom-16 left-1/2 -translate-x-1/2 bg-white py-2 px-4 rounded-sm hover:scale-105 duration-100">
-          Shop Now
+          <Link to="shopAll">Shop Now</Link>
         </button>
       </div>
 

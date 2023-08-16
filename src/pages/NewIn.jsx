@@ -34,7 +34,7 @@ const NewIn = () => {
         <div className="flex justify-center my-10">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-6">
             {products &&
-              products.slice(36, 45).map((product) => {
+              products.slice(36, 43).map((product) => {
                 return <Card item={product} key={product.id} />;
               })}
           </div>

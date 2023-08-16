@@ -19,9 +19,29 @@ const ShopAll = () => {
       });
   });
 
+  const [buttonClicked, setButtonClicked] = useState("first");
   const handleClick = (start, end) => {
     setLimitStart(start);
     setLimitEnd(end);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    switch (start) {
+      case 1:
+        setButtonClicked("first");
+        break;
+
+      case 14:
+        setButtonClicked("second");
+        break;
+
+      case 27:
+        setButtonClicked("third");
+        break;
+
+      case 40:
+        setButtonClicked("fourth");
+        break;
+    }
   };
   return (
     <>
@@ -42,26 +62,34 @@ const ShopAll = () => {
         {/* buttons */}
         <div className="flex justify-center text-[#284057] text-2xl">
           <button
-            className="mx-4 hover:underline"
+            className={`mx-4 hover:underline ${
+              buttonClicked == "first" ? "text-3xl underline" : ""
+            }`}
             onClick={() => handleClick(1, 13)}
           >
             1
           </button>
           <button
-            className="mx-4 hover:underline"
+            className={`mx-4 hover:underline ${
+              buttonClicked == "second" ? "text-3xl underline" : ""
+            }`}
             onClick={() => handleClick(14, 26)}
           >
             2
           </button>
           <button
-            className="mx-4 hover:underline"
+            className={`mx-4 hover:underline ${
+              buttonClicked == "third" ? "text-3xl underline" : ""
+            }`}
             onClick={() => handleClick(27, 39)}
           >
             3
           </button>
           <button
-            className="mx-4 hover:underline"
-            onClick={() => handleClick(40, 45)}
+            className={`mx-4 hover:underline ${
+              buttonClicked == "fourth" ? "text-3xl underline" : ""
+            }`}
+            onClick={() => handleClick(40, 43)}
           >
             4
           </button>

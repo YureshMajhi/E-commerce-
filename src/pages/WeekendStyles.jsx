@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import bestSellers from "../assets/Images/BestSellers.png";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import weekendStyles from "../assets/Images/Weekend Styles.png";
+import WeekendStylesSm from "../assets/Images/Weekend Styles sm.png";
 import Card from "../components/Card";
 
-const BestSellers = () => {
+const WeekendStyles = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     axios
@@ -19,12 +20,21 @@ const BestSellers = () => {
   return (
     <>
       <div>
-        {/* Image Section */}
+        {/* Large Image Section */}
         <div className="relative">
           <img
-            src={bestSellers}
+            src={weekendStyles}
             alt="New In Image"
-            className="h-[20vh] md:h-[30vh] lg:h-[40vh] w-full max-w-[1500px] mx-auto object-cover object-top"
+            className="hidden sm:block h-[20vh] md:h-[30vh] lg:h-[40vh] xl:h-[50vh] w-full max-w-[1500px] mx-auto object-cover object-top"
+          />
+        </div>
+
+        {/* small Image Section */}
+        <div className="relative">
+          <img
+            src={WeekendStylesSm}
+            alt="New In Image"
+            className="sm:hidden h-[20vh] w-full max-w-[1500px] mx-auto object-cover object-top"
           />
         </div>
 
@@ -32,7 +42,7 @@ const BestSellers = () => {
         <div className="flex justify-center my-10">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-6">
             {products &&
-              products.slice(25, 32).map((product) => {
+              products.slice(20, 28).map((product) => {
                 return <Card item={product} key={product.id} />;
               })}
           </div>
@@ -42,4 +52,4 @@ const BestSellers = () => {
   );
 };
 
-export default BestSellers;
+export default WeekendStyles;
