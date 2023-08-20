@@ -31,8 +31,8 @@ const Navbar = () => {
       case "bestsellers":
         setMenuClick("bestsellers");
         break;
-      case "weekendStyles":
-        setMenuClick("weekendStyles");
+      case "about":
+        setMenuClick("about");
         break;
       case "pricing":
         setMenuClick("pricing");
@@ -114,20 +114,6 @@ const Navbar = () => {
               </li>
               <li
                 className={`p-4 tracking-wide hover:underline hover:text-black hover:font-normal ${
-                  menuClick == "weekendStyles"
-                    ? "font-normal text-black underline"
-                    : ""
-                }`}
-              >
-                <Link
-                  onClick={() => handleMenuClick("weekendStyles")}
-                  to="weekendStyles"
-                >
-                  Weekend Styles
-                </Link>
-              </li>
-              <li
-                className={`p-4 tracking-wide hover:underline hover:text-black hover:font-normal ${
                   menuClick == "pricing"
                     ? "font-normal text-black underline"
                     : ""
@@ -146,6 +132,15 @@ const Navbar = () => {
               >
                 <Link onClick={() => handleMenuClick("shopAll")} to="shopAll">
                   Shop All
+                </Link>
+              </li>
+              <li
+                className={`p-4 tracking-wide hover:underline hover:text-black hover:font-normal ${
+                  menuClick == "about" ? "font-normal text-black underline" : ""
+                }`}
+              >
+                <Link onClick={() => handleMenuClick("about")} to="about">
+                  About
                 </Link>
               </li>
             </ul>

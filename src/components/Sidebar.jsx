@@ -35,14 +35,6 @@ const Sidebar = ({ nav, handleClick }) => {
             Bestsellers
           </li>
         </Link>
-        <Link to="weekendStyles">
-          <li
-            onClick={handleClick}
-            className="py-4 pl-6 my-1 hover:bg-gray-200"
-          >
-            Weekend Styles
-          </li>
-        </Link>
         <Link to="pricing">
           <li
             onClick={handleClick}
@@ -57,6 +49,14 @@ const Sidebar = ({ nav, handleClick }) => {
             className="py-4 pl-6 my-1 hover:bg-gray-200"
           >
             Shop All
+          </li>
+        </Link>
+        <Link to="about">
+          <li
+            onClick={handleClick}
+            className="py-4 pl-6 my-1 hover:bg-gray-200"
+          >
+            About
           </li>
         </Link>
       </ul>
