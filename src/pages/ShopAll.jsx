@@ -4,13 +4,14 @@ import axios from "axios";
 
 const ShopAll = () => {
   const [products, setProducts] = useState([]);
+  const [buttonClicked, setButtonClicked] = useState("first");
 
   const [limitStart, setLimitStart] = useState(1);
   const [limitEnd, setLimitEnd] = useState(13);
 
   useEffect(() => {
     axios
-      .get(`https://api.escuelajs.co/api/v1/products`)
+      .get(`https://fakestoreapi.com/products`)
       .then((res) => {
         setProducts(res.data);
       })
@@ -19,7 +20,6 @@ const ShopAll = () => {
       });
   });
 
-  const [buttonClicked, setButtonClicked] = useState("first");
   const handleClick = (start, end) => {
     setLimitStart(start);
     setLimitEnd(end);
@@ -30,16 +30,8 @@ const ShopAll = () => {
         setButtonClicked("first");
         break;
 
-      case 14:
+      case 13:
         setButtonClicked("second");
-        break;
-
-      case 27:
-        setButtonClicked("third");
-        break;
-
-      case 40:
-        setButtonClicked("fourth");
         break;
     }
   };
@@ -73,25 +65,9 @@ const ShopAll = () => {
             className={`mx-4 hover:underline ${
               buttonClicked == "second" ? "text-3xl underline" : ""
             }`}
-            onClick={() => handleClick(14, 26)}
+            onClick={() => handleClick(13, 20)}
           >
             2
-          </button>
-          <button
-            className={`mx-4 hover:underline ${
-              buttonClicked == "third" ? "text-3xl underline" : ""
-            }`}
-            onClick={() => handleClick(27, 39)}
-          >
-            3
-          </button>
-          <button
-            className={`mx-4 hover:underline ${
-              buttonClicked == "fourth" ? "text-3xl underline" : ""
-            }`}
-            onClick={() => handleClick(40, 43)}
-          >
-            4
           </button>
         </div>
       </div>
