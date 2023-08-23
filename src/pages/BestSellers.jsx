@@ -1,20 +1,10 @@
 import React, { useEffect, useState } from "react";
 import bestSellers from "../assets/Images/BestSellers.png";
-import axios from "axios";
 import Card from "../components/Card";
+import useProductAPI from "../useProductAPI";
 
 const BestSellers = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`https://fakestoreapi.com/products`)
-      .then((res) => {
-        setProducts(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+  const products = useProductAPI();
 
   return (
     <>

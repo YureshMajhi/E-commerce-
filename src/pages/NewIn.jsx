@@ -1,20 +1,10 @@
 import React, { useEffect, useState } from "react";
 import newIn from "../assets/Images/New In.png";
 import Card from "../components/Card";
-import axios from "axios";
+import useProductAPI from "../useProductAPI";
 
 const NewIn = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`https://fakestoreapi.com/products`)
-      .then((res) => {
-        setProducts(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+  const products = useProductAPI();
   return (
     <>
       <div>

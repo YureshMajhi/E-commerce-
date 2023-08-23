@@ -1,24 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
-import axios from "axios";
+import useProductAPI from "../useProductAPI";
 
 const ShopAll = () => {
-  const [products, setProducts] = useState([]);
+  const products = useProductAPI();
+
   const [buttonClicked, setButtonClicked] = useState("first");
 
   const [limitStart, setLimitStart] = useState(1);
   const [limitEnd, setLimitEnd] = useState(13);
-
-  useEffect(() => {
-    axios
-      .get(`https://fakestoreapi.com/products`)
-      .then((res) => {
-        setProducts(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
 
   const handleClick = (start, end) => {
     setLimitStart(start);
