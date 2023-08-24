@@ -1,7 +1,13 @@
 import React from "react";
-import yurushStore from "../assets/Images/Yurush Store.png";
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
+
+// Images
+import yurushStore from "../assets/Images/Yurush Store.png";
+import menClothing from "../assets/Images/men clothing.png";
+import electronics from "../assets/Images/electronics.png";
+import jwellery from "../assets/Images/jwellery.png";
+import womenClothing from "../assets/Images/women clothing.png";
 
 const HomePage = () => {
   return (
@@ -29,44 +35,48 @@ const HomePage = () => {
       {/* Products */}
       <div className="flex justify-center items-center max-w-[1500px] mx-auto p-4">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
-          <div className="overflow-hidden group">
+          <div className="overflow-hidden group cursor-pointer">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMGe96NpibpIimMNyx8DleOFWkp5_RHj7UUMJy9NNkVgSSbGIN3_-RGX1vHI2VOJkjxFo&usqp=CAU"
-              alt="a shirt"
+              src={menClothing}
+              alt="men's shirt"
               className="h-64 group-hover:scale-105 duration-300 w-[300px] object-cover"
             />
-            <p className="my-4 relative text-[#084240] font-semibold">
-              Shirt <BsArrowRight className="inline ml-2" />
+            <p className="my-4 relative pl-6 text-[#084240] font-semibold">
+              Men's Clothing{" "}
+              <BsArrowRight className="inline ml-2 group-hover:ml-4 duration-300" />
             </p>
           </div>
-          <div className="overflow-hidden group">
+          <div className="overflow-hidden group cursor-pointer">
             <img
-              src="https://5.imimg.com/data5/YS/YO/MY-22659923/ladies-boots-500x500.jpg"
-              alt="a shirt"
+              src={electronics}
+              alt="electronics"
               className="h-64 group-hover:scale-105 duration-300 w-[300px] object-cover"
             />
-            <p className="my-4 relative text-[#084240] font-semibold">
-              Boot <BsArrowRight className="inline ml-2" />
+            <p className="my-4 relative pl-6 text-[#084240] font-semibold">
+              Electronics{" "}
+              <BsArrowRight className="inline ml-2 group-hover:ml-4 duration-300" />
             </p>
           </div>
-          <div className="overflow-hidden group">
+          <div className="overflow-hidden group cursor-pointer">
             <img
-              src="https://www.westend61.de/images/0000144023pw/wrist-watches-on-white-background-close-up-CSF015427.jpg"
-              alt="a shirt"
+              src={jwellery}
+              alt="jwellery photo"
               className="h-64 group-hover:scale-105 duration-300 w-[300px] object-cover"
             />
-            <p className="my-4 relative text-[#084240] font-semibold">
-              Watch <BsArrowRight className="inline ml-2" />
+            <p className="my-4 relative pl-6 text-[#084240] font-semibold">
+              Jwelllery{" "}
+              <BsArrowRight className="inline ml-2 group-hover:ml-4 duration-300" />
             </p>
           </div>
-          <div className="overflow-hidden group">
+          <div className="overflow-hidden group cursor-pointer">
             <img
-              src="https://cdn.shopify.com/s/files/1/0535/9121/2224/products/Icon-Womens-Twenty-Niner-Gloves-Black-01.jpg?v=1620111458"
-              alt="a shirt"
+              src={womenClothing}
+              alt="women's clothing"
               className="h-64 group-hover:scale-105 duration-300 w-[300px] object-cover"
             />
-            <p className="my-4 relative text-[#084240] font-semibold">
-              Gloves <BsArrowRight className="inline ml-2" />
+            <p className="my-4 relative pl-6 text-[#084240] font-semibold">
+              Women's Clothing{" "}
+              <BsArrowRight className="inline ml-2 group-hover:ml-4 duration-300" />
             </p>
           </div>
         </div>

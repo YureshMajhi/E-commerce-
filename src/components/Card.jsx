@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ item }) => {
+const Card = ({ item, addToCart }) => {
   const { id, price, image, title } = item;
   const titleLen = title.length;
 
@@ -18,7 +18,10 @@ const Card = ({ item }) => {
           {titleLen > 25 ? title.slice(0, 25) + "..." : title}
         </p>
         <p className="text-lg">${price} USD</p>
-        <button className="bg-[#084240] text-md text-white mt-2 font-semibold py-2 rounded-3xl">
+        <button
+          className="bg-[#084240] text-md text-white mt-2 font-semibold py-2 rounded-3xl"
+          onClick={() => addToCart(id)}
+        >
           Add to cart
         </button>
       </div>
