@@ -163,7 +163,9 @@ const Navbar = () => {
               <VscAccount />
             </button>
             <button className="m-3 hover:scale-125">
-              <AiOutlineShoppingCart />
+              <a href="cart">
+                <AiOutlineShoppingCart />
+              </a>
             </button>
           </div>
         </div>
