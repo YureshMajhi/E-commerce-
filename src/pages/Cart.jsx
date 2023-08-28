@@ -1,11 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsTrash } from "react-icons/bs";
 
 const Cart = () => {
   const localProduct = JSON.parse(localStorage.getItem("myCart")) || [];
+  console.log(localProduct);
 
   const deleteItem = (itemId) => {
     console.log(itemId);
+  };
+
+  // Handle quantities
+  const [quantities, setQuantities] = useState(localProduct.map(() => 1));
+
+  const handleIncrement = (index) => {
+    const newQuantities = [...quantities];
+    newQuantities[index] += 1;
+    setQuantities(newQuantities);
+  };
+
+  const handleDecrement = (index) => {
+    if (quantities[index] > 1) {
+      const newQuantities = [...quantities];
+      newQuantities[index] -= 1;
+      setQuantities(newQuantities);
+    }
+  };
+
+  // Subtotal
+  const calculateSubtotal = () => {
+    let subtotal = 0;
+    for (let i = 0; i < localProduct.length; i++) {
+      subtotal += localProduct[i].price * quantities[i];
+    }
+    return subtotal.toFixed(2);
   };
 
   return (
@@ -31,12 +58,12 @@ const Cart = () => {
             <hr className="my-6" />
           </div>
 
-          {/* products section */}
-          {localProduct.map((item) => {
+          {/* products showcase */}
+          {localProduct.map((item, i) => {
             return (
               <div
-                key={item.id}
-                className="flex justify-between md:items-center"
+                key={i}
+                className="flex justify-between md:items-center my-4"
               >
                 {/* Info */}
                 <div className="flex justify-between gap-4">
@@ -50,14 +77,14 @@ const Cart = () => {
                   </div>
                   <div className="md:flex items-center">
                     <div>
-                      <p className="w-52 mr-10">{item.title}</p>
+                      <p className="w-52 mr-10">{item.title.slice(0, 20)}...</p>
                       <p className="my-2 font-light">${item.price}</p>
                     </div>
                     <div className="flex">
                       <div className="flex border-2 border-gray-700 text-gray-700 w-[150px] h-[50px] justify-around p-2">
-                        <button>-</button>
-                        <p>1</p>
-                        <button>+</button>
+                        <button onClick={() => handleDecrement(i)}>-</button>
+                        <p>{quantities[i]}</p>
+                        <button onClick={() => handleIncrement(i)}>+</button>
                       </div>
                       <button
                         className="ml-5"
@@ -68,7 +95,9 @@ const Cart = () => {
                     </div>
                   </div>
                 </div>
-                <div className="mt-2 text-gray-700">$198</div>
+                <div className="mt-2 text-gray-700">
+                  ${(item.price * quantities[i]).toFixed(2)}{" "}
+                </div>
               </div>
             );
           })}
@@ -89,7 +118,10 @@ const Cart = () => {
           </div>
           <div>
             <p className="text-center my-2 text-xl text-[#084240]">
-              Subtotal <span className="text-gray-700 ml-4">$500 USD</span>
+              Subtotal{" "}
+              <span className="text-gray-700 ml-4">
+                ${calculateSubtotal()} USD
+              </span>
             </p>
             <p className="text-center text-gray-700 my-2 text-sm">
               Taxes and shipping calculated at checkout
