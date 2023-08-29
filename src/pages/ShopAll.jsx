@@ -1,48 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
-import useProductAPI from "../useProductAPI";
+import useProductAPI from "../utils/useProductAPI.js";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import useCart from "../utils/useCart";
 
 const ShopAll = () => {
   const products = useProductAPI();
-
-  // setting products
-  const [localProduct, setLocalProduct] = useState(() => {
-    const localValue = localStorage.getItem("myCart");
-
-    if (localValue) return JSON.parse(localValue);
-
-    return [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem("myCart", JSON.stringify(localProduct));
-  }, [localProduct]);
-
-  const addToCart = (itemId) => {
-    const selectedProduct = products.find((item) => {
-      return item.id === itemId;
-    });
-
-    // Checking if the selected Product exists in the storage
-    const currentProduct = localProduct.find((currentItem) => {
-      return currentItem.id === itemId;
-    });
-
-    if (currentProduct) {
-      toast.error("Item already exist in the cart.");
-    } else {
-      // localProduct.push(selectedProduct);
-      setLocalProduct((currentProduct) => {
-        return [...currentProduct, selectedProduct];
-      });
-      // localStorage.setItem("myCart", JSON.stringify(localProduct));
-      toast.success(
-        `${selectedProduct.title} is successfully added to the cart.`
-      );
-    }
-  };
+  const { localProduct, addToCart } = useCart();
 
   // Page navigation
   const [buttonClicked, setButtonClicked] = useState("first");
@@ -56,7 +21,7 @@ const ShopAll = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     switch (start) {
-      case 1:
+      case 0:
         setButtonClicked("first");
         break;
 

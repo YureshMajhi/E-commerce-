@@ -6,12 +6,15 @@ const Card = ({ item, addToCart }) => {
 
   return (
     <>
-      <div id={id} className="flex flex-col text-gray-950 max-w-[300px]">
+      <div
+        id={id}
+        className="flex flex-col text-gray-950 max-w-[300px] group  cursor-pointer"
+      >
         <div>
           <img
             src={image}
             alt="Image"
-            className="object-contain w-full h-[300px]"
+            className="object-contain w-full h-[300px] p-4 group-hover:p-0 duration-300"
           />
         </div>
         <p className="my-3 text-md">
@@ -19,7 +22,7 @@ const Card = ({ item, addToCart }) => {
         </p>
         <p className="text-lg">${price} USD</p>
         <button
-          className="bg-[#084240] text-md text-white mt-2 font-semibold py-2 rounded-3xl"
+          className="bg-[#084240] text-md text-white mt-2 font-semibold py-2 rounded-3xl hover:opacity-80"
           onClick={() => addToCart(id)}
         >
           Add to cart

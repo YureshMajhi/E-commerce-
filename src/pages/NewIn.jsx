@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import newIn from "../assets/Images/New In.png";
 import Card from "../components/Card";
-import useProductAPI from "../useProductAPI";
+import useProductAPI from "../utils/useProductAPI";
+import useCart from "../utils/useCart";
+import { ToastContainer, toast } from "react-toastify";
 
 const NewIn = () => {
   const products = useProductAPI();
+
+  const { localProduct, addToCart } = useCart();
+
   return (
     <>
+      <ToastContainer theme="colored" position="top-center" />
+
       <div>
         {/* Image Section */}
         <div className="relative">
@@ -25,7 +32,9 @@ const NewIn = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 p-6">
             {products &&
               products.slice(5, 12).map((product) => {
-                return <Card item={product} key={product.id} />;
+                return (
+                  <Card item={product} key={product.id} addToCart={addToCart} />
+                );
               })}
           </div>
         </div>
