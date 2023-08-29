@@ -1,7 +1,7 @@
 import React from "react";
 import { BsTrash } from "react-icons/bs";
 
-const CartItem = ({ item, i, quantities, setQuantities }) => {
+const CartItem = ({ item, i, quantities, setQuantities, deleteItem }) => {
   const handleIncrement = (index) => {
     const newQuantities = [...quantities];
     newQuantities[index] += 1;
@@ -39,7 +39,10 @@ const CartItem = ({ item, i, quantities, setQuantities }) => {
                 <p>{quantities[i]}</p>
                 <button onClick={() => handleIncrement(i)}>+</button>
               </div>
-              <button className="ml-5">
+              <button
+                onClick={() => deleteItem(item.id)}
+                className="ml-5 scale-125 md:scale-100 hover:scale-125 duration-150"
+              >
                 <BsTrash />
               </button>
             </div>

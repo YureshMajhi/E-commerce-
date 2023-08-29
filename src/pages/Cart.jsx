@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import CartItem from "../components/CartItem";
 import Checkout from "../components/Checkout";
+import useCart from "../utils/useCart";
 
 const Cart = () => {
-  const localProduct = JSON.parse(localStorage.getItem("myCart")) || [];
+  const { localProduct, deleteItem } = useCart();
 
   // Handle quantities
   const [quantities, setQuantities] = useState(localProduct.map(() => 1));
@@ -49,6 +50,7 @@ const Cart = () => {
                 i={i}
                 setQuantities={setQuantities}
                 quantities={quantities}
+                deleteItem={deleteItem}
               />
             );
           })}

@@ -42,7 +42,15 @@ const useCart = () => {
     }
   };
 
-  return { localProduct, addToCart };
+  const deleteItem = (itemId) => {
+    setLocalProduct((currentProduct) => {
+      return currentProduct.filter((product) => {
+        return product.id !== itemId;
+      });
+    });
+  };
+
+  return { localProduct, addToCart, deleteItem };
 };
 
 export default useCart;
