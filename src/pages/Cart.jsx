@@ -27,7 +27,7 @@ const Cart = () => {
         <div className="flex justify-between mb-6">
           <h2 className="text-3xl text-[#084240]">Your Cart</h2>
           <p className="underline font-light text-gray-700 hover:font-normal cursor-pointer">
-            <Link to="shopAll">Continue shopping</Lin>
+            <Link to="/shopAll">Continue shopping</Link>
           </p>
         </div>
 
