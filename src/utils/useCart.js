@@ -19,6 +19,8 @@ const useCart = () => {
   }, [localProduct]);
 
   const addToCart = (itemId) => {
+    toast.dismiss();
+
     const selectedProduct = products.find((item) => {
       return item.id === itemId;
     });

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CartItem from "../components/CartItem";
 import Checkout from "../components/Checkout";
 import useCart from "../utils/useCart";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { localProduct, deleteItem } = useCart();
@@ -26,7 +27,7 @@ const Cart = () => {
         <div className="flex justify-between mb-6">
           <h2 className="text-3xl text-[#084240]">Your Cart</h2>
           <p className="underline font-light text-gray-700 hover:font-normal cursor-pointer">
-            <a href="shopAll">Continue shopping</a>
+            <Link to="shopAll">Continue shopping</Lin>
           </p>
         </div>
 
