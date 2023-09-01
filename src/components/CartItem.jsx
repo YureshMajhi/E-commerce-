@@ -34,7 +34,7 @@ const CartItem = ({ item, i, quantities, setQuantities, deleteItem }) => {
               <p className="my-2 font-light">${item.price}</p>
             </div>
             <div className="flex">
-              <div className="flex border-2 border-gray-700 text-gray-700 w-[150px] h-[50px] justify-around p-2">
+              <div className="flex border-2 border-gray-700 text-gray-700 w-[120px] md:w-[150px] h-[40px] md:h-[50px] justify-around p-2">
                 <button onClick={() => handleDecrement(i)}>-</button>
                 <p>{quantities[i]}</p>
                 <button onClick={() => handleIncrement(i)}>+</button>
@@ -48,7 +48,7 @@ const CartItem = ({ item, i, quantities, setQuantities, deleteItem }) => {
             </div>
           </div>
         </div>
-        <div className="mt-2 text-gray-700">
+        <div className="mt-2 mr-5 text-gray-700">
           ${(item.price * quantities[i]).toFixed(2)}{" "}
         </div>
       </div>
