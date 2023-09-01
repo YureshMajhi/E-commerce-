@@ -30,7 +30,7 @@ const CartItem = ({ item, i, quantities, setQuantities, deleteItem }) => {
           </div>
           <div className="md:flex items-center">
             <div>
-              <p className="w-52 mr-10">{item.title.slice(0, 20)}...</p>
+              <p className="w-52 md:mr-10">{item.title.slice(0, 20)}...</p>
               <p className="my-2 font-light">${item.price}</p>
             </div>
             <div className="flex">
@@ -48,7 +48,7 @@ const CartItem = ({ item, i, quantities, setQuantities, deleteItem }) => {
             </div>
           </div>
         </div>
-        <div className="mt-2 mr-5 text-gray-700">
+        <div className="mt-2 text-gray-700">
           ${(item.price * quantities[i]).toFixed(2)}{" "}
         </div>
       </div>

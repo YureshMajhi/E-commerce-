@@ -37,7 +37,7 @@ const Cart = () => {
           <div>
             <div className="flex justify-between text-gray-700 uppercase text-xs">
               <p>product</p>
-              <p className="mr-5">total</p>
+              <p>total</p>
             </div>
             <hr className="my-6" />
           </div>
