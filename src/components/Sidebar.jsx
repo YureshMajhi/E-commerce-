@@ -15,7 +15,7 @@ const Sidebar = ({ nav, handleClick }) => {
         {/* Mobile Menu */}
       </div>
       <ul
-        className={`w-[300px] flex flex-col duration-300 md:w-[400px] fixed top-0 pt-[150px] bottom-0 text-xl bg-white z-40
+        className={`w-[300px] flex flex-col duration-300 md:w-[400px] fixed top-0 pt-[200px] bottom-0 text-xl bg-white z-40
           ${nav ? "translate-x-[-100%] duration-300" : "translate-x-0"}`}
       >
         <Link to="/newIn">

@@ -46,6 +46,13 @@ const Navbar = () => {
   // Set title size
   const [bigFont, setBigFont] = useState(false);
   useEffect(() => {
+    // Setting title size for small screen
+    if (window.innerWidth < 640) {
+      setBigFont(false);
+      return;
+    }
+
+    // Setting title size for big screen on scroll
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
