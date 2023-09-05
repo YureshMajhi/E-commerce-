@@ -50,6 +50,8 @@ const Navbar = () => {
     if (window.innerWidth < 640) {
       setBigFont(false);
       return;
+    } else {
+      setBigFont(true);
     }
 
     // Setting title size for big screen on scroll
