@@ -39,7 +39,7 @@ const useCart = () => {
       });
       // localStorage.setItem("myCart", JSON.stringify(localProduct));
       toast.success(
-        `${selectedProduct.title} is successfully added to the cart.`
+        `${selectedProduct.title} is successfully added to the cart.`,
       );
     }
   };
