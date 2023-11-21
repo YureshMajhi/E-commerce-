@@ -20,7 +20,6 @@ const HomePage = () => {
           console.log(data.error);
         } else {
           setCategories(data);
-          console.log(categories);
         }
       })
       .catch((error) => {
@@ -55,7 +54,10 @@ const HomePage = () => {
           {categories &&
             categories.map((category) => {
               return (
-                <div className="overflow-hidden group cursor-pointer">
+                <div
+                  key={category._id}
+                  className="overflow-hidden group cursor-pointer"
+                >
                   <img
                     src={menClothing}
                     alt={category.title}
