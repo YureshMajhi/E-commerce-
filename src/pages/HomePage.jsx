@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
@@ -8,8 +8,25 @@ import menClothing from "../assets/Images/men clothing.png";
 import electronics from "../assets/Images/electronics.png";
 import jwellery from "../assets/Images/jwellery.png";
 import womenClothing from "../assets/Images/women clothing.png";
+import { getAllCategories } from "../api/categoryApi";
 
 const HomePage = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getAllCategories()
+      .then((data) => {
+        if (data.error) {
+          console.log(data.error);
+        } else {
+          setCategories(data);
+          console.log(categories);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <>
       {/* Image Holder */}
@@ -35,50 +52,22 @@ const HomePage = () => {
       {/* Products */}
       <div className="flex justify-center items-center max-w-[1500px] mx-auto p-4">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
-          <div className="overflow-hidden group cursor-pointer">
-            <img
-              src={menClothing}
-              alt="men's shirt"
-              className="h-64 group-hover:scale-105 duration-300 w-[300px] object-cover"
-            />
-            <p className="my-4 relative pl-6 text-[#084240] font-semibold">
-              Men's Clothing{" "}
-              <BsArrowRight className="inline ml-2 group-hover:ml-4 duration-300" />
-            </p>
-          </div>
-          <div className="overflow-hidden group cursor-pointer">
-            <img
-              src={electronics}
-              alt="electronics"
-              className="h-64 group-hover:scale-105 duration-300 w-[300px] object-cover"
-            />
-            <p className="my-4 relative pl-6 text-[#084240] font-semibold">
-              Electronics{" "}
-              <BsArrowRight className="inline ml-2 group-hover:ml-4 duration-300" />
-            </p>
-          </div>
-          <div className="overflow-hidden group cursor-pointer">
-            <img
-              src={jwellery}
-              alt="jwellery photo"
-              className="h-64 group-hover:scale-105 duration-300 w-[300px] object-cover"
-            />
-            <p className="my-4 relative pl-6 text-[#084240] font-semibold">
-              Jwelllery{" "}
-              <BsArrowRight className="inline ml-2 group-hover:ml-4 duration-300" />
-            </p>
-          </div>
-          <div className="overflow-hidden group cursor-pointer">
-            <img
-              src={womenClothing}
-              alt="women's clothing"
-              className="h-64 group-hover:scale-105 duration-300 w-[300px] object-cover"
-            />
-            <p className="my-4 relative pl-6 text-[#084240] font-semibold">
-              Women's Clothing{" "}
-              <BsArrowRight className="inline ml-2 group-hover:ml-4 duration-300" />
-            </p>
-          </div>
+          {categories &&
+            categories.map((category) => {
+              return (
+                <div className="overflow-hidden group cursor-pointer">
+                  <img
+                    src={menClothing}
+                    alt={category.title}
+                    className="h-64 group-hover:scale-105 duration-300 w-[300px] object-cover"
+                  />
+                  <p className="my-4 relative pl-6 text-[#084240] font-semibold">
+                    {category.title}
+                    <BsArrowRight className="inline ml-2 group-hover:ml-4 duration-300" />
+                  </p>
+                </div>
+              );
+            })}
         </div>
       </div>
     </>
