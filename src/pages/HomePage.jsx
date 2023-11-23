@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 // Images
 import yurushStore from "../assets/Images/Yurush Store.png";
 import menClothing from "../assets/Images/men clothing.png";
-import electronics from "../assets/Images/electronics.png";
-import jwellery from "../assets/Images/jwellery.png";
-import womenClothing from "../assets/Images/women clothing.png";
+
+// API
 import { getAllCategories } from "../api/categoryApi";
 
 const HomePage = () => {
