@@ -169,7 +169,9 @@ const Navbar = () => {
               <AiOutlineSearch />
             </button>
             <button className="m-3 hover:scale-125">
-              <VscAccount />
+              <Link to="signup">
+                <VscAccount />
+              </Link>
             </button>
             <button className="m-3 hover:scale-125">
               <Link to="cart">

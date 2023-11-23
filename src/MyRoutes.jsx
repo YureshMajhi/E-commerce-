@@ -8,6 +8,7 @@ import Pricing from "./pages/Pricing";
 import ShopAll from "./pages/ShopAll";
 import About from "./pages/About";
 import Cart from "./pages/Cart";
+import SignUp from "./pages/SignUp";
 
 const MyRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const MyRoutes = () => {
           <Route path="shopAll" element={<ShopAll />} />
           <Route path="about" element={<About />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="signup" element={<SignUp />} />
         </Route>
       </Routes>
     </>
