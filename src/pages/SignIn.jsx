@@ -71,6 +71,7 @@ const SignIn = () => {
           type="email"
           className="border-[#7c8d87] border-[1px] p-3"
           placeholder="Email"
+          name="email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
