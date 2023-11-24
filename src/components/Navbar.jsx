@@ -169,7 +169,7 @@ const Navbar = () => {
               <AiOutlineSearch />
             </button>
             <button className="m-3 hover:scale-125">
-              <Link to="signup">
+              <Link to="signin">
                 <VscAccount />
               </Link>
             </button>

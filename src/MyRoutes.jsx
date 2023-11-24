@@ -9,6 +9,8 @@ import ShopAll from "./pages/ShopAll";
 import About from "./pages/About";
 import Cart from "./pages/Cart";
 import SignUp from "./pages/SignUp";
+import EmailVerification from "./pages/EmailVerification";
+import SignIn from "./pages/SignIn";
 
 const MyRoutes = () => {
   return (
@@ -23,6 +25,11 @@ const MyRoutes = () => {
           <Route path="about" element={<About />} />
           <Route path="cart" element={<Cart />} />
           <Route path="signup" element={<SignUp />} />
+          <Route path="signin" element={<SignIn />} />
+          <Route
+            path="emailverification/:token"
+            element={<EmailVerification />}
+          />
         </Route>
       </Routes>
     </>
