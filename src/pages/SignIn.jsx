@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { authenticate, login } from "../api/userApi";
+import { authenticate, isAuthentiated, login } from "../api/userApi";
 
 // icons
 import { MdError } from "react-icons/md";
@@ -9,6 +9,8 @@ const SignIn = () => {
   // input values
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { user } = isAuthentiated();
 
   // result
   const [error, setError] = useState("");
@@ -51,6 +53,9 @@ const SignIn = () => {
   // show successful message
   const redirect = () => {
     if (success) {
+      if (user.role === "admin") {
+        return navigate("/admindashboard");
+      }
       return navigate("/");
     }
   };

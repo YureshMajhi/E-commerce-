@@ -46,3 +46,15 @@ export const isAuthentiated = () => {
 
   return false;
 };
+
+export const forgotPassword = (email) => {
+  return fetch(`${API}/api/user/forgetpassword`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  })
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
+};

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { MdError } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { FaGrinStars } from "react-icons/fa";
+import { forgotPassword } from "../api/userApi";
 
 const ForgetPassword = () => {
   // input values
@@ -14,6 +15,18 @@ const ForgetPassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    forgotPassword(email).then((data) => {
+      if (data.error) {
+        setSuccess("");
+        setError(data.error);
+      } else {
+        setSuccess(data.msg);
+        setError("");
+
+        setEmail("");
+      }
+    });
   };
 
   // show error messsage
