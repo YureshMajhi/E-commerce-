@@ -11,6 +11,7 @@ import Cart from "./pages/Cart";
 import SignUp from "./pages/SignUp";
 import EmailVerification from "./pages/EmailVerification";
 import SignIn from "./pages/SignIn";
+import ForgetPassword from "./pages/ForgetPassword";
 
 const MyRoutes = () => {
   return (
@@ -26,6 +27,7 @@ const MyRoutes = () => {
           <Route path="cart" element={<Cart />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="signin" element={<SignIn />} />
+          <Route path="forgotpassword" element={<ForgetPassword />} />
           <Route
             path="emailverification/:token"
             element={<EmailVerification />}

@@ -6,17 +6,23 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { VscAccount } from "react-icons/vsc";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
+import { FaHouseUser } from "react-icons/fa6";
+import { GrUserAdmin } from "react-icons/gr";
+import { IoLogOut } from "react-icons/io5";
 
 import "../App.css";
 import Sidebar from "./Sidebar";
 import Info from "./Info";
 import { Link } from "react-router-dom";
+import { isAuthentiated } from "../api/userApi";
 
 const Navbar = () => {
   const [nav, setNav] = useState(true);
   const handleClick = () => {
     setNav(!nav);
   };
+
+  const { user } = isAuthentiated();
 
   const [menuClick, setMenuClick] = useState("");
   const handleMenuClick = (menuItem) => {
@@ -169,14 +175,42 @@ const Navbar = () => {
               <AiOutlineSearch />
             </button>
             <button className="m-3 hover:scale-125">
-              <Link to="signin">
-                <VscAccount />
-              </Link>
+              {user ? (
+                <>
+                  {user.role === "admin" && (
+                    <Link to="admindashboard">
+                      <GrUserAdmin />
+                    </Link>
+                  )}
+                  {user.role === "customer" && (
+                    <Link to="userprofile">
+                      <FaHouseUser />
+                    </Link>
+                  )}
+                </>
+              ) : (
+                <Link to="signin">
+                  <VscAccount />
+                </Link>
+              )}
             </button>
+
             <button className="m-3 hover:scale-125">
-              <Link to="cart">
-                <AiOutlineShoppingCart />
-              </Link>
+              {user ? (
+                <>
+                  {user.role === "admin" ? (
+                    <IoLogOut />
+                  ) : (
+                    <Link to="cart">
+                      <AiOutlineShoppingCart />
+                    </Link>
+                  )}
+                </>
+              ) : (
+                <Link to="cart">
+                  <AiOutlineShoppingCart />
+                </Link>
+              )}
             </button>
           </div>
         </div>

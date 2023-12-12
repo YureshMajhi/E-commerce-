@@ -32,3 +32,17 @@ export const login = (email, password) => {
     .then((response) => response.json())
     .catch((error) => console.log(error));
 };
+
+export const authenticate = (data) => {
+  return localStorage.setItem("jwt", JSON.stringify(data));
+};
+
+export const isAuthentiated = () => {
+  const loggedIn = JSON.parse(localStorage.getItem("jwt"));
+
+  if (loggedIn) {
+    return loggedIn;
+  }
+
+  return false;
+};

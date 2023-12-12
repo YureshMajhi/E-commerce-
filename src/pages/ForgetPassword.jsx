@@ -1,39 +1,19 @@
 import React, { useState } from "react";
-import { authenticate, login } from "../api/userApi";
 
 // icons
 import { MdError } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { FaGrinStars } from "react-icons/fa";
 
-const SignIn = () => {
+const ForgetPassword = () => {
   // input values
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  // result
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
-
-  const navigate = useNavigate();
+  const [success, setSuccess] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    login(email, password).then((data) => {
-      if (data.error) {
-        setError(data.error);
-        setSuccess(false);
-      } else {
-        setError("");
-        setSuccess(true);
-
-        authenticate(data);
-
-        // clear the data
-        setEmail("");
-        setPassword("");
-      }
-    });
   };
 
   // show error messsage
@@ -48,10 +28,14 @@ const SignIn = () => {
     }
   };
 
-  // show successful message
-  const redirect = () => {
+  const showSuccess = () => {
     if (success) {
-      return navigate("/");
+      return (
+        <div className="flex items-center gap-3">
+          <FaGrinStars className="text-green-600 scale-150" />
+          <p className="text-[#084240] underline">{success}</p>
+        </div>
+      );
     }
   };
 
@@ -60,15 +44,17 @@ const SignIn = () => {
       <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
         {/* Title */}
         <h1 className="text-2xl md:text-4xl my-4 md:my-8 text-[#084240] text-center">
-          Login
+          Reset your password
+          <span className="text-lg block mt-4 text-gray-500">
+            We will send you an email to reset your password
+          </span>
         </h1>
 
         {/* signin result */}
         {showError()}
-        {redirect()}
+        {showSuccess()}
 
         {/* Input Feilds */}
-
         <input
           type="email"
           className="border-[#7c8d87] border-[1px] p-3"
@@ -77,29 +63,16 @@ const SignIn = () => {
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
-        <input
-          type="password"
-          className="border-[#7c8d87] border-[1px] p-3"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        <Link
-          to="/forgotpassword"
-          className="underline text-[#084240] font-light hover:font-bold"
-        >
-          Forgot your password?
-        </Link>
 
         <div className="flex flex-col justify-center items-center gap-5">
           <button className="bg-[#084240] text-white p-3 rounded w-[125px]">
-            Sign In
+            Submit
           </button>
           <Link
-            to="/signup"
+            to="/signin"
             className="underline text-[#084240] font-light hover:font-bold"
           >
-            Create account
+            Cancel
           </Link>
         </div>
       </form>
@@ -107,4 +80,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default ForgetPassword;
