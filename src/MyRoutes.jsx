@@ -12,6 +12,7 @@ import SignUp from "./pages/SignUp";
 import EmailVerification from "./pages/EmailVerification";
 import SignIn from "./pages/SignIn";
 import ForgetPassword from "./pages/ForgetPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 const MyRoutes = () => {
   return (
@@ -28,6 +29,7 @@ const MyRoutes = () => {
           <Route path="signup" element={<SignUp />} />
           <Route path="signin" element={<SignIn />} />
           <Route path="forgotpassword" element={<ForgetPassword />} />
+          <Route path="resetpassword/:token" element={<ResetPassword />} />
           <Route
             path="emailverification/:token"
             element={<EmailVerification />}

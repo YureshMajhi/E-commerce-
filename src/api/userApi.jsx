@@ -58,3 +58,15 @@ export const forgotPassword = (email) => {
     .then((response) => response.json())
     .catch((error) => console.log(error));
 };
+
+export const resetPassword = (password, token) => {
+  return fetch(`${API}/api/user/resetpassword/${token}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ password }),
+  })
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
+};
