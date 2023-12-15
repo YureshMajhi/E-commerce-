@@ -13,6 +13,9 @@ import EmailVerification from "./pages/EmailVerification";
 import SignIn from "./pages/SignIn";
 import ForgetPassword from "./pages/ForgetPassword";
 import ResetPassword from "./pages/ResetPassword";
+import AdminLayout from "./layouts/AdminLayout";
+import AdminDashboard from "./components/Admin/AdminDashboard";
+import AdminCategory from "./components/Admin/AdminCategory";
 
 const MyRoutes = () => {
   return (
@@ -34,6 +37,12 @@ const MyRoutes = () => {
             path="emailverification/:token"
             element={<EmailVerification />}
           />
+
+          {/* admin  */}
+          <Route path="admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="category" element={<AdminCategory />} />
+          </Route>
         </Route>
       </Routes>
     </>

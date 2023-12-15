@@ -178,7 +178,7 @@ const Navbar = () => {
               {user ? (
                 <>
                   {user.role === "admin" && (
-                    <Link to="admindashboard">
+                    <Link to="admin">
                       <GrUserAdmin />
                     </Link>
                   )}

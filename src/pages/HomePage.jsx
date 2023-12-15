@@ -47,7 +47,7 @@ const HomePage = () => {
         </p>
       </div>
 
-      {/* Products */}
+      {/* Categories */}
       <div className="flex justify-center items-center max-w-[1500px] mx-auto p-4">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
           {categories &&

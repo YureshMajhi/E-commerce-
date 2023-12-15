@@ -54,7 +54,7 @@ const SignIn = () => {
   const redirect = () => {
     if (success) {
       if (user.role === "admin") {
-        return navigate("/admindashboard");
+        return navigate("/admin");
       }
       return navigate("/");
     }
