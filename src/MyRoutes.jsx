@@ -16,6 +16,7 @@ import ResetPassword from "./pages/ResetPassword";
 import AdminLayout from "./layouts/AdminLayout";
 import AdminDashboard from "./components/Admin/AdminDashboard";
 import AdminCategory from "./components/Admin/AdminCategory";
+import AddCategory from "./components/Admin/AddCategory";
 
 const MyRoutes = () => {
   return (
@@ -42,6 +43,7 @@ const MyRoutes = () => {
           <Route path="admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="category" element={<AdminCategory />} />
+            <Route path="category/add" element={<AddCategory />} />
           </Route>
         </Route>
       </Routes>

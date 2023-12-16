@@ -19,7 +19,9 @@ const AdminSidebar = () => {
           <Link to={"category"}>
             <li
               className={`admin-li ${
-                active === "/admin/category" ? "menu-active" : ""
+                active === "/admin/category" || "/admin/category/add"
+                  ? "menu-active"
+                  : ""
               }`}
             >
               Category
