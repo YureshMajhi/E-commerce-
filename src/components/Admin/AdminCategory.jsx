@@ -38,7 +38,7 @@ const AdminCategory = () => {
             {categories &&
               categories.map((category, i) => {
                 return (
-                  <tr className="hover:bg-gray-200">
+                  <tr key={i} className="hover:bg-gray-200">
                     <td className="text-xl text-gray-700">{i + 1}</td>
                     <td className="text-xl text-gray-700">{category.title}</td>
                     <td className="w-36 p-2">

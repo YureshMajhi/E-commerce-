@@ -10,19 +10,15 @@ const AdminSidebar = () => {
       <div>
         <ul>
           <Link to={"/admin"}>
-            <li
-              className={`admin-li ${active === "/admin" ? "menu-active" : ""}`}
-            >
+            <li className={`admin-li ${active === "/admin" && "menu-active"}`}>
               Dashboard
             </li>
           </Link>
           <Link to={"category"}>
             <li
               className={`admin-li ${
-                active === "/admin/category" || "/admin/category/add"
-                  ? "menu-active"
-                  : ""
-              }`}
+                active === "/admin/category" && "menu-active"
+              } ${active === "/admin/category/add" && "menu-active"}`}
             >
               Category
             </li>
