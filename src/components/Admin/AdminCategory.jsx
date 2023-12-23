@@ -43,9 +43,12 @@ const AdminCategory = () => {
                     <td className="text-xl text-gray-700">{category.title}</td>
                     <td className="w-36 p-2">
                       <div className="flex flex-col gap-2 text-white">
-                        <button className="bg-yellow-500 hover:bg-yellow-300 p-2 rounded-md">
-                          Update
-                        </button>
+                        <Link
+                          to={`update/${category._id}`}
+                          className="bg-yellow-500 hover:bg-yellow-300 p-2 rounded-md"
+                        >
+                          <button>Update</button>
+                        </Link>
                         <button className="bg-red-500 hover:bg-red-300 p-2 rounded-md">
                           Remove
                         </button>

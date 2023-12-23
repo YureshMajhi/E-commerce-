@@ -17,6 +17,7 @@ import AdminLayout from "./layouts/AdminLayout";
 import AdminDashboard from "./components/Admin/AdminDashboard";
 import AdminCategory from "./components/Admin/AdminCategory";
 import AddCategory from "./components/Admin/AddCategory";
+import UpdateCategory from "./components/Admin/UpdateCategory";
 
 const MyRoutes = () => {
   return (
@@ -44,6 +45,7 @@ const MyRoutes = () => {
             <Route index element={<AdminDashboard />} />
             <Route path="category" element={<AdminCategory />} />
             <Route path="category/add" element={<AddCategory />} />
+            <Route path="category/update/:id" element={<UpdateCategory />} />
           </Route>
         </Route>
       </Routes>

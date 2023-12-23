@@ -18,3 +18,22 @@ export const addCategory = (title, token) => {
     .then((response) => response.json())
     .catch((error) => console.log(error));
 };
+
+export const updateCategory = (id, title, token) => {
+  return fetch(`${API}/api/category/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ title }),
+  })
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
+};
+
+export const getCategoryDetail = (id) => {
+  return fetch(`${API}/api/category/${id}`)
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
+};
