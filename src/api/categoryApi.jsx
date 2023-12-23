@@ -37,3 +37,14 @@ export const getCategoryDetail = (id) => {
     .then((response) => response.json())
     .catch((error) => console.log(error));
 };
+
+export const deleteCategory = (id) => {
+  return fetch(`${API}/api/category/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application-json",
+    },
+  })
+    .then((response) => response.json)
+    .catch((error) => console.log(error));
+};

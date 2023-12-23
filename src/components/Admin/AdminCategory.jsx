@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { getAllCategories } from "../../api/categoryApi";
+import { deleteCategory, getAllCategories } from "../../api/categoryApi";
+import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const AdminCategory = () => {
+  const [change, handleChange] = useState(true);
+
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     getAllCategories().then((data) => {
@@ -12,10 +16,25 @@ const AdminCategory = () => {
         setCategories(data);
       }
     });
-  }, []);
+  }, [change]);
+
+  const handleDelete = (id) => {
+    deleteCategory(id).then((data) => {
+      if (data.error) {
+        toast.error(data.error);
+      } else {
+        {
+          toast.success(`Category removed successfully`);
+          handleChange(!change);
+        }
+      }
+    });
+  };
 
   return (
     <>
+      <ToastContainer theme="colored" position="top-center" />
+
       <div className="max-w-3xl mx-auto px-4">
         {/* Title */}
         <div className="flex justify-between my-4">
@@ -49,7 +68,10 @@ const AdminCategory = () => {
                         >
                           <button>Update</button>
                         </Link>
-                        <button className="bg-red-500 hover:bg-red-300 p-2 rounded-md">
+                        <button
+                          onClick={() => handleDelete(category._id)}
+                          className="bg-red-500 hover:bg-red-300 p-2 rounded-md"
+                        >
                           Remove
                         </button>
                       </div>
