@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { addCategory } from "../../api/categoryApi";
-import { isAuthentiated } from "../../api/userApi";
+import { addCategory } from "../../../api/categoryApi";
+import { isAuthentiated } from "../../../api/userApi";
 import { MdError } from "react-icons/md";
 import { FaGrinStars } from "react-icons/fa";
 

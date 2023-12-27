@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { isAuthentiated } from "../../api/userApi";
+import { isAuthentiated } from "../../../api/userApi";
 import { MdError } from "react-icons/md";
 import { FaGrinStars } from "react-icons/fa";
-import { getCategoryDetail, updateCategory } from "../../api/categoryApi";
+import { getCategoryDetail, updateCategory } from "../../../api/categoryApi";
 import { useParams } from "react-router-dom";
 
 const UpdateCategory = () => {
@@ -24,7 +24,6 @@ const UpdateCategory = () => {
       } else {
         setError("");
         setSuccess(true);
-        setCategory("");
       }
     });
   };

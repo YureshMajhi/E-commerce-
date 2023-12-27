@@ -15,9 +15,10 @@ import ForgetPassword from "./pages/ForgetPassword";
 import ResetPassword from "./pages/ResetPassword";
 import AdminLayout from "./layouts/AdminLayout";
 import AdminDashboard from "./components/Admin/AdminDashboard";
-import AdminCategory from "./components/Admin/AdminCategory";
-import AddCategory from "./components/Admin/AddCategory";
-import UpdateCategory from "./components/Admin/UpdateCategory";
+import AdminCategory from "./components/Admin/Category/AdminCategory";
+import AddCategory from "./components/Admin/Category/AddCategory";
+import UpdateCategory from "./components/Admin/Category/UpdateCategory";
+import AdminProduct from "./components/Admin/Product/AdminProduct";
 
 const MyRoutes = () => {
   return (
@@ -43,9 +44,14 @@ const MyRoutes = () => {
           {/* admin  */}
           <Route path="admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
+
+            {/* Category */}
             <Route path="category" element={<AdminCategory />} />
             <Route path="category/add" element={<AddCategory />} />
             <Route path="category/update/:id" element={<UpdateCategory />} />
+
+            {/* Product */}
+            <Route path="product" element={<AdminProduct />} />
           </Route>
         </Route>
       </Routes>
