@@ -3,6 +3,7 @@ import { deleteCategory, getAllCategories } from "../../api/categoryApi";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const AdminCategory = () => {
   const [change, handleChange] = useState(true);
@@ -19,14 +20,35 @@ const AdminCategory = () => {
   }, [change]);
 
   const handleDelete = (id) => {
-    deleteCategory(id).then((data) => {
-      if (data.error) {
-        toast.error(data.error);
-      } else {
-        {
-          toast.success(`Category removed successfully`);
-          handleChange(!change);
-        }
+    Swal.fire({
+      title: "Delete Category",
+      text: "Are you sure you want to delete this category?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+      confirmButtonColor: "red",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteCategory(id).then((data) => {
+          if (data.error) {
+            Swal.fire({
+              title: data.error,
+              icon: "error",
+              timer: 2000,
+              showConfirmButton: false,
+              position: "top-right",
+            });
+          } else {
+            Swal.fire({
+              title: "Category Deleted Successfully",
+              icon: "success",
+              timer: 2000,
+              showConfirmButton: false,
+              position: "top-right",
+            });
+            handleChange(!change);
+          }
+        });
       }
     });
   };
