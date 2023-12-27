@@ -19,6 +19,7 @@ import AdminCategory from "./components/Admin/Category/AdminCategory";
 import AddCategory from "./components/Admin/Category/AddCategory";
 import UpdateCategory from "./components/Admin/Category/UpdateCategory";
 import AdminProduct from "./components/Admin/Product/AdminProduct";
+import AddProduct from "./components/Admin/Product/AddProduct";
 
 const MyRoutes = () => {
   return (
@@ -52,6 +53,7 @@ const MyRoutes = () => {
 
             {/* Product */}
             <Route path="product" element={<AdminProduct />} />
+            <Route path="product/add" element={<AddProduct />} />
           </Route>
         </Route>
       </Routes>
