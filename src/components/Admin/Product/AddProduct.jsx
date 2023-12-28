@@ -57,10 +57,6 @@ const AddProduct = () => {
           Add New Product
         </h2>
 
-        {/*  result */}
-        {/* {showError()}
-        {showSuccess()} */}
-
         <div className="w-full">
           <label className="text-[#084240] font-bold text-lg" htmlFor="title">
             Product Name
