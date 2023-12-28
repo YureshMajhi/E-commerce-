@@ -16,3 +16,15 @@ export const deleteProduct = (id) => {
     .then((response) => response.json())
     .catch((error) => console.log(error));
 };
+
+export const addProduct = (token, product) => {
+  return fetch(`${API}/api/product/addproduct`, {
+    method: "POST",
+    headers: {
+      authentication: `Bearer ${token}`,
+    },
+    body: product,
+  })
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
+};

@@ -1,10 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { getAllCategories } from "../../../api/categoryApi";
+import { addProduct } from "../../../api/productapi";
+import { isAuthentiated } from "../../../api/userApi";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddProduct = () => {
-  const [product, setProduct] = useState({});
+  const { token } = isAuthentiated();
+
+  const [product, setProduct] = useState({
+    formData: new FormData(),
+  });
+
+  const { formData } = product;
+  const handleChange = (e) => {
+    if (e.target.name == "image") {
+      formData.set(e.target.name, e.target.files[0]);
+    } else {
+      formData.set(e.target.name, e.target.value);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log(token);
+    console.log(formData);
+
+    addProduct(token, formData).then((data) => {
+      if (data.error) {
+        toast.error(data.error);
+      } else {
+        toast.success("Product added successfully");
+      }
+    });
   };
 
   const [categories, setCategories] = useState([]);
@@ -19,6 +47,8 @@ const AddProduct = () => {
   }, []);
   return (
     <>
+      <ToastContainer theme="colored" position="top-center" />
+
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-start gap-6 p-4 bg-[#08424038] max-w-lg ml-6 rounded-lg border-2 border-[#084240]"
@@ -39,7 +69,8 @@ const AddProduct = () => {
             type="text"
             placeholder="Enter New Product"
             id="title"
-            onChange={(e) => setProduct(e.target.value)}
+            name="title"
+            onChange={handleChange}
             className="p-2 rounded w-full"
           />
         </div>
@@ -52,7 +83,8 @@ const AddProduct = () => {
             type="number"
             placeholder="Enter Price"
             id="price"
-            onChange={(e) => setProduct(e.target.value)}
+            name="price"
+            onChange={handleChange}
             className="p-2 rounded w-full"
           />
         </div>
@@ -68,7 +100,8 @@ const AddProduct = () => {
             placeholder="Describe your product"
             id="description"
             rows={4}
-            onChange={(e) => setProduct(e.target.value)}
+            name="description"
+            onChange={handleChange}
             className="p-2 rounded w-full resize-none"
           ></textarea>
         </div>
@@ -84,7 +117,8 @@ const AddProduct = () => {
             type="number"
             placeholder="Stock"
             id="count_in_stock"
-            onChange={(e) => setProduct(e.target.value)}
+            name="count_in_stock"
+            onChange={handleChange}
             className="p-2 rounded w-full"
           />
         </div>
@@ -97,7 +131,8 @@ const AddProduct = () => {
             type="file"
             placeholder="Image"
             id="image"
-            onChange={(e) => setProduct(e.target.value)}
+            name="image"
+            onChange={handleChange}
             className="p-2 rounded w-full"
           />
         </div>
@@ -109,14 +144,19 @@ const AddProduct = () => {
           >
             Select Category
           </label>
-          <select id="category" defaultValue="" className="p-2 rounded w-full">
-            <option value="" disabled>
+          <select
+            id="category"
+            name="category"
+            onChange={handleChange}
+            className="p-2 rounded w-full"
+          >
+            <option value="" selected disabled>
               Choose a Category
             </option>
             {/* Category list from api */}
             {categories &&
               categories.map((category, i) => (
-                <option key={i} value={category.title}>
+                <option key={i} value={category._id}>
                   {category.title}
                 </option>
               ))}
