@@ -28,8 +28,8 @@ const UpdateProduct = () => {
       if (data.error) {
         console.log(error);
       } else {
-        setProduct(data);
-        category_ref.current = data.category._id;
+        setProduct({ ...product, ...data });
+        category_ref.current.value = data.category?._id;
       }
     });
 
@@ -193,8 +193,8 @@ const UpdateProduct = () => {
               ))}
           </select>
         </div>
-        <button className="bg-[#084240] text-white p-3 rounded w-[105px] border-2 border-[#08424000] mx-auto">
-          Add
+        <button className="bg-[#084240] text-white p-3 rounded w-full border-2 border-[#08424000] mx-auto">
+          Update
         </button>
       </form>
     </>
