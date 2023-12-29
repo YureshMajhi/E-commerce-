@@ -20,6 +20,7 @@ import AddCategory from "./components/Admin/Category/AddCategory";
 import UpdateCategory from "./components/Admin/Category/UpdateCategory";
 import AdminProduct from "./components/Admin/Product/AdminProduct";
 import AddProduct from "./components/Admin/Product/AddProduct";
+import UpdateProduct from "./components/Admin/Product/UpdateProduct";
 
 const MyRoutes = () => {
   return (
@@ -54,6 +55,7 @@ const MyRoutes = () => {
             {/* Product */}
             <Route path="product" element={<AdminProduct />} />
             <Route path="product/add" element={<AddProduct />} />
+            <Route path="product/update/:id" element={<UpdateProduct />} />
           </Route>
         </Route>
       </Routes>

@@ -28,3 +28,21 @@ export const addProduct = (token, product) => {
     .then((response) => response.json())
     .catch((error) => console.log(error));
 };
+
+export const getProduct = (id) => {
+  return fetch(`${API}/api/product/getproduct/${id}`)
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
+};
+
+export const updateProduct = (id, token, product) => {
+  return fetch(`${API}/api/product/updateproduct/${id}`, {
+    method: "PATCH",
+    headers: {
+      authentication: `Bearer ${token}`,
+    },
+    body: product,
+  })
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
+};
