@@ -21,12 +21,14 @@ import UpdateCategory from "./components/Admin/Category/UpdateCategory";
 import AdminProduct from "./components/Admin/Product/AdminProduct";
 import AddProduct from "./components/Admin/Product/AddProduct";
 import UpdateProduct from "./components/Admin/Product/UpdateProduct";
+import AdminRoute from "./selectiveRoutes/AdminRoute";
 
 const MyRoutes = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Layouts />}>
+          {/* Customer */}
           <Route index element={<HomePage />} />
           <Route path="newIn" element={<NewIn />} />
           <Route path="bestsellers" element={<BestSellers />} />
@@ -44,18 +46,20 @@ const MyRoutes = () => {
           />
 
           {/* admin  */}
-          <Route path="admin" element={<AdminLayout />}>
-            <Route index element={<AdminDashboard />} />
+          <Route path="/" element={<AdminRoute />}>
+            <Route path="admin" element={<AdminLayout />}>
+              <Route index element={<AdminDashboard />} />
 
-            {/* Category */}
-            <Route path="category" element={<AdminCategory />} />
-            <Route path="category/add" element={<AddCategory />} />
-            <Route path="category/update/:id" element={<UpdateCategory />} />
+              {/* Category */}
+              <Route path="category" element={<AdminCategory />} />
+              <Route path="category/add" element={<AddCategory />} />
+              <Route path="category/update/:id" element={<UpdateCategory />} />
 
-            {/* Product */}
-            <Route path="product" element={<AdminProduct />} />
-            <Route path="product/add" element={<AddProduct />} />
-            <Route path="product/update/:id" element={<UpdateProduct />} />
+              {/* Product */}
+              <Route path="product" element={<AdminProduct />} />
+              <Route path="product/add" element={<AddProduct />} />
+              <Route path="product/update/:id" element={<UpdateProduct />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

@@ -13,8 +13,9 @@ import { IoLogOut } from "react-icons/io5";
 import "../App.css";
 import Sidebar from "./Sidebar";
 import Info from "./Info";
-import { Link } from "react-router-dom";
-import { isAuthentiated } from "../api/userApi";
+import { Link, useNavigate } from "react-router-dom";
+import { isAuthentiated, logout } from "../api/userApi";
+import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
   const [nav, setNav] = useState(true);
@@ -76,8 +77,21 @@ const Navbar = () => {
     }
   };
 
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logout().then((data) => {
+      if (data.error) {
+        toast.error(data.error);
+      } else {
+        toast.success(data.msg);
+        navigate("/");
+      }
+    });
+  };
+
   return (
     <>
+      <ToastContainer theme="colored" position="top-center" />
       <Info />
       <div className="sticky top-0 z-50 bg-white">
         <div className="flex justify-between max-w-[1400px] mx-auto pl-16 pr-4 py-8 ">
@@ -199,7 +213,7 @@ const Navbar = () => {
               {user ? (
                 <>
                   {user.role === "admin" ? (
-                    <IoLogOut />
+                    <IoLogOut onClick={handleLogout} />
                   ) : (
                     <Link to="cart">
                       <AiOutlineShoppingCart />

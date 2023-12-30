@@ -70,3 +70,10 @@ export const resetPassword = (password, token) => {
     .then((response) => response.json())
     .catch((error) => console.log(error));
 };
+
+export const logout = () => {
+  localStorage.removeItem("jwt");
+  return fetch(`${API}/api/user/signout`)
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
+};
