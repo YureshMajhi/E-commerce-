@@ -1,5 +1,6 @@
 import React from "react";
 import { BsTrash } from "react-icons/bs";
+import { API } from "../config";
 
 const CartItem = ({ item, i, quantities, setQuantities, deleteItem }) => {
   const handleIncrement = (index) => {
@@ -23,7 +24,7 @@ const CartItem = ({ item, i, quantities, setQuantities, deleteItem }) => {
           <div>
             {" "}
             <img
-              src={item.image}
+              src={`${API}/${item.image}`}
               alt="boot"
               className="h-32 w-32 md:h-20 md:w-20 object-contain mr-[50px]"
             />

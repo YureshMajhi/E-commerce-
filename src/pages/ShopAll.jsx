@@ -4,9 +4,22 @@ import useProductAPI from "../utils/useProductAPI.js";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import useCart from "../utils/useCart";
+import { getAllProducts } from "../api/productapi.jsx";
 
 const ShopAll = () => {
-  const products = useProductAPI();
+  // const products = useProductAPI();
+
+  const [products, setProduct] = useState([]);
+  useEffect(() => {
+    getAllProducts().then((data) => {
+      if (data.error) {
+        toast.error(data.error);
+      } else {
+        setProduct(data);
+      }
+    });
+  }, []);
+
   const { localProduct, addToCart } = useCart();
 
   // Page navigation
@@ -44,7 +57,11 @@ const ShopAll = () => {
             {products &&
               products.slice(limitStart, limitEnd).map((product) => {
                 return (
-                  <Card item={product} key={product.id} addToCart={addToCart} />
+                  <Card
+                    item={product}
+                    key={product._id}
+                    addToCart={addToCart}
+                  />
                 );
               })}
           </div>

@@ -1,9 +1,20 @@
 import React, { useEffect, useState } from "react";
-import useProductAPI from "./useProductAPI";
 import { ToastContainer, toast } from "react-toastify";
+import { getAllProducts } from "../api/productapi";
 
 const useCart = () => {
-  const products = useProductAPI();
+  // const products = useProductAPI();
+
+  const [products, setProduct] = useState([]);
+  useEffect(() => {
+    getAllProducts().then((data) => {
+      if (data.error) {
+        toast.error(data.error);
+      } else {
+        setProduct(data);
+      }
+    });
+  }, []);
 
   // setting products
   const [localProduct, setLocalProduct] = useState(() => {
@@ -22,12 +33,12 @@ const useCart = () => {
     toast.dismiss();
 
     const selectedProduct = products.find((item) => {
-      return item.id === itemId;
+      return item._id === itemId;
     });
 
     // Checking if the selected Product exists in the storage
     const currentProduct = localProduct.find((currentItem) => {
-      return currentItem.id === itemId;
+      return currentItem._id === itemId;
     });
 
     if (currentProduct) {
@@ -39,7 +50,7 @@ const useCart = () => {
       });
       // localStorage.setItem("myCart", JSON.stringify(localProduct));
       toast.success(
-        `${selectedProduct.title} is successfully added to the cart.`,
+        `${selectedProduct.title} is successfully added to the cart.`
       );
     }
   };
@@ -47,7 +58,7 @@ const useCart = () => {
   const deleteItem = (itemId) => {
     setLocalProduct((currentProduct) => {
       return currentProduct.filter((product) => {
-        return product.id !== itemId;
+        return product._id !== itemId;
       });
     });
   };
