@@ -23,9 +23,6 @@ const AddProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(token);
-    console.log(formData);
-
     addProduct(token, formData).then((data) => {
       if (data.error) {
         toast.error(data.error);
@@ -158,7 +155,7 @@ const AddProduct = () => {
               ))}
           </select>
         </div>
-        <button className="bg-[#084240] text-white p-3 rounded w-[105px] border-2 border-[#08424000] mx-auto">
+        <button className="bg-[#084240] text-white p-3 rounded w-full border-2 border-[#08424000] mx-auto">
           Add
         </button>
       </form>
