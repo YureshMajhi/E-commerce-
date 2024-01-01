@@ -46,3 +46,15 @@ export const updateProduct = (id, token, product) => {
     .then((response) => response.json())
     .catch((error) => console.log(error));
 };
+
+export const getFilteredProducts = (filters) => {
+  return fetch(`${API}/api/product/getfilteredproduct`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(filters),
+  })
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
+};

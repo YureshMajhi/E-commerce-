@@ -4,21 +4,29 @@ import useProductAPI from "../utils/useProductAPI.js";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import useCart from "../utils/useCart";
-import { getAllProducts } from "../api/productapi.jsx";
+import { getAllProducts, getFilteredProducts } from "../api/productapi.jsx";
+import CategorySelect from "../components/CategorySelect.jsx";
+import PriceRadio from "../components/PriceRadio.jsx";
 
 const ShopAll = () => {
   // const products = useProductAPI();
+  const [filter, setFilter] = useState({
+    filters: {
+      category: [],
+      price: [],
+    },
+  });
 
   const [products, setProduct] = useState([]);
   useEffect(() => {
-    getAllProducts().then((data) => {
+    getFilteredProducts(filter).then((data) => {
       if (data.error) {
         toast.error(data.error);
       } else {
         setProduct(data);
       }
     });
-  }, []);
+  }, [filter]);
 
   const { localProduct, addToCart } = useCart();
 
@@ -44,14 +52,28 @@ const ShopAll = () => {
     }
   };
 
+  const handleFilter = (filters, filterBy) => {
+    let newFilter = { ...filter };
+    newFilter.filters[filterBy] = filters;
+    setFilter(newFilter);
+  };
+
   return (
     <>
       <ToastContainer theme="colored" position="top-center" />
+
       <div>
         {/* Products Section */}
         <h2 className="my-10 pl-10 text-4xl text-[#284057] max-w-[1350px] mx-auto">
           Shop All
         </h2>
+
+        {/* filter products */}
+        <div className="w-full max-w-[1500px] mx-auto flex flex-row-reverse px-16">
+          <CategorySelect handleCategory={handleFilter} />
+          <PriceRadio handlePrice={handleFilter} />
+        </div>
+
         <div className="flex justify-center my-10">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 gap-y-20 p-6">
             {products &&
