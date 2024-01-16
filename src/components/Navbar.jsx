@@ -17,6 +17,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { isAuthentiated, logout } from "../api/userApi";
 import { ToastContainer, toast } from "react-toastify";
 
+import { useSelector } from "react-redux";
+
 const Navbar = () => {
   const [nav, setNav] = useState(true);
   const handleClick = () => {
@@ -88,6 +90,8 @@ const Navbar = () => {
       }
     });
   };
+
+  let cartCount = useSelector((state) => state.cart.cart_items.length);
 
   return (
     <>
@@ -215,14 +219,24 @@ const Navbar = () => {
                   {user.role === "admin" ? (
                     <IoLogOut onClick={handleLogout} />
                   ) : (
-                    <Link to="cart">
+                    <Link to="cart" className="relative">
                       <AiOutlineShoppingCart />
+                      {cartCount > 0 && (
+                        <span className="absolute scale-75 flex items-center text-xs rounded-full top-1 -right-7 bg-[#084240] w-6 h-6 justify-center text-white">
+                          {cartCount}
+                        </span>
+                      )}
                     </Link>
                   )}
                 </>
               ) : (
-                <Link to="cart">
+                <Link to="cart" className="relative">
                   <AiOutlineShoppingCart />
+                  {cartCount > 0 && (
+                    <span className="absolute scale-75 flex items-center text-xs rounded-full top-1 -right-7 bg-[#084240] w-6 h-6 justify-center text-white">
+                      {cartCount}
+                    </span>
+                  )}
                 </Link>
               )}
             </button>

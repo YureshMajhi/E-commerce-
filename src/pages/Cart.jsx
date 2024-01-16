@@ -1,22 +1,26 @@
 import React, { useState } from "react";
 import CartItem from "../components/CartItem";
 import Checkout from "../components/Checkout";
-import useCart from "../utils/useCart";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const { localProduct, deleteItem } = useCart();
+  let cart_items = useSelector((state) => state.cart.cart_items);
 
   // Handle quantities
-  const [quantities, setQuantities] = useState(localProduct.map(() => 1));
+  const [quantities, setQuantities] = useState(cart_items.map(() => 1));
 
   // Subtotal
   const calculateSubtotal = () => {
     let subtotal = 0;
-    for (let i = 0; i < localProduct.length; i++) {
-      subtotal += localProduct[i].price * quantities[i];
+    for (let i = 0; i < cart_items.length; i++) {
+      subtotal += cart_items[i].price * quantities[i];
     }
     return subtotal.toFixed(2);
+  };
+
+  const deleteItem = () => {
+    console.log("delete");
   };
 
   return (
@@ -43,7 +47,7 @@ const Cart = () => {
           </div>
 
           {/* products showcase */}
-          {localProduct.map((item, i) => {
+          {cart_items.map((item, i) => {
             return (
               <CartItem
                 key={i}
