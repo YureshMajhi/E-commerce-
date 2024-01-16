@@ -1,9 +1,16 @@
 import React from "react";
 import { API } from "../config";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../reducers/cartActions";
 
-const Card = ({ item, addToCart }) => {
+const Card = ({ item }) => {
   const { _id, price, image, title } = item;
   const titleLen = title.length;
+
+  const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    dispatch(addToCart(_id, 1));
+  };
 
   return (
     <>
@@ -26,7 +33,7 @@ const Card = ({ item, addToCart }) => {
         </p>
         <button
           className="bg-[#084240] text-md text-white mt-2 font-semibold py-2 rounded-3xl hover:opacity-80"
-          onClick={() => addToCart(_id)}
+          onClick={handleAddToCart}
         >
           Add to cart
         </button>
