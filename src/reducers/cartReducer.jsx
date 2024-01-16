@@ -20,9 +20,19 @@ const cartReducer = (state = {}, action) => {
     }
 
     case REMOVE_FROM_CART: {
+      let product = action.payload;
+
+      return {
+        ...state,
+        cart_items: state.cart_items.filter((item) => item.product !== product),
+      };
     }
 
     case EMPTY_CART: {
+      return {
+        ...state,
+        cart_items: [],
+      };
     }
 
     default:

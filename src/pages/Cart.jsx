@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import CartItem from "../components/CartItem";
 import Checkout from "../components/Checkout";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "../reducers/cartActions";
 
 const Cart = () => {
   let cart_items = useSelector((state) => state.cart.cart_items);
@@ -19,8 +20,9 @@ const Cart = () => {
     return subtotal.toFixed(2);
   };
 
-  const deleteItem = () => {
-    console.log("delete");
+  const dispatch = useDispatch();
+  const deleteItem = (id) => {
+    dispatch(removeFromCart(id));
   };
 
   return (

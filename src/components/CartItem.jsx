@@ -45,7 +45,7 @@ const CartItem = ({ item, i, quantities, setQuantities, deleteItem }) => {
                 <button onClick={() => handleIncrement(i)}>+</button>
               </div>
               <button
-                onClick={() => deleteItem(item.id)}
+                onClick={() => deleteItem(item.product)}
                 className="ml-5 scale-125 md:scale-100 hover:scale-125 duration-150"
               >
                 <BsTrash />
