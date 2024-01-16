@@ -25,13 +25,17 @@ const CartItem = ({ item, i, quantities, setQuantities, deleteItem }) => {
             {" "}
             <img
               src={`${API}/${item.image}`}
-              alt="boot"
+              alt={item.title}
               className="h-32 w-32 md:h-20 md:w-20 object-contain mr-[50px]"
             />
           </div>
           <div className="md:flex items-center">
             <div>
-              <p className="w-52 md:mr-10">{item.title.slice(0, 20)}...</p>
+              <p className="w-52 md:mr-10">
+                {item.title.length > 20
+                  ? item.title.slice(0, 20) + "..."
+                  : item.title}
+              </p>
               <p className="my-2 font-light">${item.price}</p>
             </div>
             <div className="flex">
