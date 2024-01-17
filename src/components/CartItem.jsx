@@ -1,19 +1,29 @@
 import React from "react";
 import { BsTrash } from "react-icons/bs";
 import { API } from "../config";
+import { useDispatch } from "react-redux";
+import { updateCart } from "../reducers/cartActions";
+import { toast } from "react-toastify";
 
-const CartItem = ({ item, i, quantities, setQuantities, deleteItem }) => {
-  const handleIncrement = (index) => {
-    const newQuantities = [...quantities];
-    newQuantities[index] += 1;
-    setQuantities(newQuantities);
+const CartItem = ({ item, deleteItem }) => {
+  const dispatch = useDispatch();
+
+  const handleIncrement = (item) => {
+    let quantity = item.quantity + 1;
+    if (quantity > item.count_in_stock) {
+      toast.error(`${item.title} reached maximum stock`);
+    } else {
+      let updatedProduct = { ...item, quantity: quantity };
+      dispatch(updateCart(updatedProduct));
+    }
   };
 
-  const handleDecrement = (index) => {
-    if (quantities[index] > 1) {
-      const newQuantities = [...quantities];
-      newQuantities[index] -= 1;
-      setQuantities(newQuantities);
+  const handleDecrement = (item) => {
+    let quantity = item.quantity;
+    if (quantity > 1) {
+      quantity--;
+      let updatedProduct = { ...item, quantity: quantity-- };
+      dispatch(updateCart(updatedProduct));
     }
   };
   return (
@@ -40,9 +50,9 @@ const CartItem = ({ item, i, quantities, setQuantities, deleteItem }) => {
             </div>
             <div className="flex">
               <div className="flex border-2 border-gray-700 text-gray-700 w-[120px] md:w-[150px] h-[40px] md:h-[50px] justify-around p-2">
-                <button onClick={() => handleDecrement(i)}>-</button>
-                <p>{quantities[i]}</p>
-                <button onClick={() => handleIncrement(i)}>+</button>
+                <button onClick={() => handleDecrement(item)}>-</button>
+                <p>{item.quantity}</p>
+                <button onClick={() => handleIncrement(item)}>+</button>
               </div>
               <button
                 onClick={() => deleteItem(item.product)}
@@ -54,7 +64,7 @@ const CartItem = ({ item, i, quantities, setQuantities, deleteItem }) => {
           </div>
         </div>
         <div className="mt-2 text-gray-700">
-          ${(item.price * quantities[i]).toFixed(2)}{" "}
+          ${(item.price * item.quantity).toFixed(2)}{" "}
         </div>
       </div>
     </>

@@ -1,5 +1,10 @@
 import { toast } from "react-toastify";
-import { ADD_TO_CART, EMPTY_CART, REMOVE_FROM_CART } from "./cartConstants";
+import {
+  ADD_TO_CART,
+  EMPTY_CART,
+  REMOVE_FROM_CART,
+  UPDATE_CART,
+} from "./cartConstants";
 
 const cartReducer = (state = {}, action) => {
   switch (action.type) {
@@ -32,6 +37,15 @@ const cartReducer = (state = {}, action) => {
       return {
         ...state,
         cart_items: [],
+      };
+    }
+
+    case UPDATE_CART: {
+      return {
+        ...state,
+        cart_items: state.cart_items.map((item) =>
+          item.product === action.payload.product ? action.payload : item
+        ),
       };
     }
 

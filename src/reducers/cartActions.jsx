@@ -1,6 +1,11 @@
 import { toast } from "react-toastify";
 import { getProduct } from "../api/productapi";
-import { ADD_TO_CART, EMPTY_CART, REMOVE_FROM_CART } from "./cartConstants";
+import {
+  ADD_TO_CART,
+  EMPTY_CART,
+  REMOVE_FROM_CART,
+  UPDATE_CART,
+} from "./cartConstants";
 
 export const addToCart =
   (product_id, quantity) => async (dispatch, getState) => {
@@ -34,6 +39,14 @@ export const removeFromCart = (product_id) => async (dispatch, getState) => {
 export const emptyCart = () => async (dispatch, getState) => {
   await dispatch({ type: EMPTY_CART, payload: product_id });
 
+  localStorage.setItem(
+    "cart_items",
+    JSON.stringify(getState().cart.cart_items)
+  );
+};
+
+export const updateCart = (product) => async (dispatch, getState) => {
+  await dispatch({ type: UPDATE_CART, payload: product });
   localStorage.setItem(
     "cart_items",
     JSON.stringify(getState().cart.cart_items)

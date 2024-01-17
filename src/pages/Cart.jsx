@@ -8,14 +8,11 @@ import { removeFromCart } from "../reducers/cartActions";
 const Cart = () => {
   let cart_items = useSelector((state) => state.cart.cart_items);
 
-  // Handle quantities
-  const [quantities, setQuantities] = useState(cart_items.map(() => 1));
-
   // Subtotal
   const calculateSubtotal = () => {
     let subtotal = 0;
     for (let i = 0; i < cart_items.length; i++) {
-      subtotal += cart_items[i].price * quantities[i];
+      subtotal += cart_items[i].price * cart_items[i].quantity;
     }
     return subtotal.toFixed(2);
   };
@@ -50,16 +47,7 @@ const Cart = () => {
 
           {/* products showcase */}
           {cart_items.map((item, i) => {
-            return (
-              <CartItem
-                key={i}
-                item={item}
-                i={i}
-                setQuantities={setQuantities}
-                quantities={quantities}
-                deleteItem={deleteItem}
-              />
-            );
+            return <CartItem key={i} item={item} deleteItem={deleteItem} />;
           })}
           <hr className="my-6" />
         </div>
