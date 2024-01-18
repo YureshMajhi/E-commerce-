@@ -3,6 +3,7 @@ import {
   ADD_TO_CART,
   EMPTY_CART,
   REMOVE_FROM_CART,
+  SAVE_SHIPPING_INFO,
   UPDATE_CART,
 } from "./cartConstants";
 
@@ -46,6 +47,13 @@ const cartReducer = (state = {}, action) => {
         cart_items: state.cart_items.map((item) =>
           item.product === action.payload.product ? action.payload : item
         ),
+      };
+    }
+
+    case SAVE_SHIPPING_INFO: {
+      return {
+        ...state,
+        shipping_info: action.payload,
       };
     }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Checkout = ({ calculateSubtotal }) => {
   return (
@@ -25,9 +26,12 @@ const Checkout = ({ calculateSubtotal }) => {
             Taxes and shipping calculated at checkout
           </p>
           <div className="flex justify-center">
-            <button className="bg-[#084240] w-full max-w-sm text-white py-3 rounded-md">
+            <Link
+              to="/checkout"
+              className="bg-[#084240] w-full max-w-sm text-white py-3 rounded-md text-center"
+            >
               Check out
-            </button>
+            </Link>
           </div>
         </div>
       </div>

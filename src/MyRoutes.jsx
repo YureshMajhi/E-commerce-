@@ -22,6 +22,7 @@ import AdminProduct from "./components/Admin/Product/AdminProduct";
 import AddProduct from "./components/Admin/Product/AddProduct";
 import UpdateProduct from "./components/Admin/Product/UpdateProduct";
 import AdminRoute from "./selectiveRoutes/AdminRoute";
+import CheckoutForm from "./pages/CheckoutForm";
 
 const MyRoutes = () => {
   return (
@@ -39,6 +40,7 @@ const MyRoutes = () => {
           <Route path="signup" element={<SignUp />} />
           <Route path="signin" element={<SignIn />} />
           <Route path="forgotpassword" element={<ForgetPassword />} />
+          <Route path="checkout" element={<CheckoutForm />} />
           <Route path="resetpassword/:token" element={<ResetPassword />} />
           <Route
             path="emailverification/:token"

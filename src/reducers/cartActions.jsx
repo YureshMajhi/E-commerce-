@@ -1,9 +1,9 @@
-import { toast } from "react-toastify";
 import { getProduct } from "../api/productapi";
 import {
   ADD_TO_CART,
   EMPTY_CART,
   REMOVE_FROM_CART,
+  SAVE_SHIPPING_INFO,
   UPDATE_CART,
 } from "./cartConstants";
 
@@ -52,3 +52,12 @@ export const updateCart = (product) => async (dispatch, getState) => {
     JSON.stringify(getState().cart.cart_items)
   );
 };
+
+export const saveShippingInfo =
+  (shipping_info) => async (dispatch, getState) => {
+    await dispatch({ type: SAVE_SHIPPING_INFO, payload: shipping_info });
+    localStorage.setItem(
+      "shipping_info",
+      JSON.stringify(getState().cart.shipping_info)
+    );
+  };

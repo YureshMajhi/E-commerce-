@@ -14,9 +14,15 @@ const Cart = () => {
     for (let i = 0; i < cart_items.length; i++) {
       subtotal += cart_items[i].price * cart_items[i].quantity;
     }
+
+    // store in session storage
+    sessionStorage.setItem("total", subtotal);
+    const total = sessionStorage.getItem("total");
+
     return subtotal.toFixed(2);
   };
 
+  // remove from cart
   const dispatch = useDispatch();
   const deleteItem = (id) => {
     dispatch(removeFromCart(id));
@@ -45,6 +51,12 @@ const Cart = () => {
             <hr className="my-6" />
           </div>
 
+          {cart_items.length == 0 && (
+            <h2 className="text-center text-[#084240] text-4xl p-14">
+              Your cart is empty
+            </h2>
+          )}
+
           {/* products showcase */}
           {cart_items.map((item, i) => {
             return <CartItem key={i} item={item} deleteItem={deleteItem} />;
@@ -53,7 +65,9 @@ const Cart = () => {
         </div>
 
         {/* Checkout Section */}
-        <Checkout calculateSubtotal={calculateSubtotal} />
+        {!cart_items.length == 0 && (
+          <Checkout calculateSubtotal={calculateSubtotal} />
+        )}
       </div>
     </>
   );

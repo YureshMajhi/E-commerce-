@@ -18,3 +18,14 @@ th {
 td {
   @apply border-2 border-gray-500;
 }
+
+/* .checkout-form input {
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid gray;
+  border-radius: 5px;
+} */
+
+.checkout-form input {
+  @apply w-full max-w-md border-gray-400 border-[1px] rounded-md p-2;
+}
