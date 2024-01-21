@@ -37,7 +37,7 @@ export const removeFromCart = (product_id) => async (dispatch, getState) => {
 };
 
 export const emptyCart = () => async (dispatch, getState) => {
-  await dispatch({ type: EMPTY_CART, payload: product_id });
+  await dispatch({ type: EMPTY_CART });
 
   localStorage.setItem(
     "cart_items",

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { isAuthentiated } from "../api/userApi";
 import { placeOrder } from "../api/orderApi";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { emptyCart } from "../reducers/cartActions";
 
 const PaymentSuccess = () => {
   const shipping_info = JSON.parse(localStorage.getItem("shipping_info"));
@@ -9,6 +11,8 @@ const PaymentSuccess = () => {
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let order = {
@@ -23,6 +27,7 @@ const PaymentSuccess = () => {
       } else {
         setError("");
         setSuccess(true);
+        dispatch(emptyCart());
       }
     });
   }, []);

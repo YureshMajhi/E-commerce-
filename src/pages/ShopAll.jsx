@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import useCart from "../utils/useCart";
 import { getFilteredProducts } from "../api/productapi.jsx";
 import CategorySelect from "../components/CategorySelect.jsx";
 import PriceRadio from "../components/PriceRadio.jsx";
@@ -25,8 +24,6 @@ const ShopAll = () => {
       }
     });
   }, [filter]);
-
-  const { localProduct, addToCart } = useCart();
 
   // Page navigation
   const [buttonClicked, setButtonClicked] = useState("first");
@@ -76,13 +73,7 @@ const ShopAll = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 gap-y-20 p-6">
             {products &&
               products.slice(limitStart, limitEnd).map((product) => {
-                return (
-                  <Card
-                    item={product}
-                    key={product._id}
-                    addToCart={addToCart}
-                  />
-                );
+                return <Card item={product} key={product._id} />;
               })}
           </div>
         </div>
