@@ -62,7 +62,7 @@ export const forgotPassword = (email) => {
 export const resetPassword = (password, token) => {
   return fetch(`${API}/api/user/resetpassword/${token}`, {
     method: "POST",
-    headers: {
+    headers: { 
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ password }),

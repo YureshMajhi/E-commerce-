@@ -25,6 +25,7 @@ import AdminRoute from "./selectiveRoutes/AdminRoute";
 import CheckoutForm from "./pages/CheckoutForm";
 import PaymentMain from "./pages/PaymentMain";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import Profile from "./pages/Profile";
 
 const MyRoutes = () => {
   return (
@@ -34,6 +35,7 @@ const MyRoutes = () => {
           {/* Customer */}
           <Route index element={<HomePage />} />
           <Route path="newIn" element={<NewIn />} />
+          <Route path="userprofile" element={<Profile />} />
           <Route path="bestsellers" element={<BestSellers />} />
           <Route path="pricing" element={<Pricing />} />
           <Route path="shopAll" element={<ShopAll />} />

@@ -11,3 +11,15 @@ export const placeOrder = (order) => {
     .then((res) => res.json())
     .catch((error) => console.log(error));
 };
+
+export const getuserorders = (userId) => {
+  return fetch(`${API}/api/order/getuserorder/${userId}`)
+    .then((res) => res.json())
+    .catch((error) => console.log(error));
+};
+
+export const getorderdetails = (orderId) => {
+  return fetch(`${API}/api/order/getorderdetails/${orderId}`)
+    .then((res) => res.json())
+    .catch((error) => console.log(error));
+};
