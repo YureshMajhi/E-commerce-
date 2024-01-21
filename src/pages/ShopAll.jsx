@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
-import useProductAPI from "../utils/useProductAPI.js";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import useCart from "../utils/useCart";
-import { getAllProducts, getFilteredProducts } from "../api/productapi.jsx";
+import { getFilteredProducts } from "../api/productapi.jsx";
 import CategorySelect from "../components/CategorySelect.jsx";
 import PriceRadio from "../components/PriceRadio.jsx";
 
 const ShopAll = () => {
-  // const products = useProductAPI();
   const [filter, setFilter] = useState({
     filters: {
       category: [],

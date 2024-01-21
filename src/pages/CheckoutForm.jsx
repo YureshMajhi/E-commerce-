@@ -11,7 +11,15 @@ const CheckoutForm = () => {
   const personReducer = (state, e) => {
     return { ...state, [e.target.name]: e.target.value };
   };
-  const [person, setPerson] = useReducer(personReducer, {});
+  const [person, setPerson] = useReducer(
+    personReducer,
+    localStorage.getItem("shipping_info")
+      ? JSON.parse(localStorage.getItem("shipping_info"))
+      : {}
+  );
+
+  const { contact_person, street, city, postal_code, state, country, phone } =
+    person;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,12 +28,12 @@ const CheckoutForm = () => {
     e.preventDefault();
 
     dispatch(saveShippingInfo(person));
-    return navigate("payment");
+    return navigate("/payment");
   };
 
   return (
     <>
-      <div className="flex flex-col md:flex-row mt-2 w-full max-w-[1500px] mx-auto">
+      <div className="flex flex-col md:flex-row my-2 w-full max-w-[1500px] mx-auto">
         {/* Checkout Form */}
         <form className="checkout-form flex-1 flex flex-col items-center md:items-end mr-8 gap-3">
           <h2 className="w-full max-w-md text-2xl text-[#084240]">Contact</h2>
@@ -35,6 +43,7 @@ const CheckoutForm = () => {
             id="contact_person"
             name="contact_person"
             onChange={setPerson}
+            value={contact_person}
           />
           <input
             type="text"
@@ -42,6 +51,7 @@ const CheckoutForm = () => {
             id="street"
             name="street"
             onChange={setPerson}
+            value={street}
           />
           <input
             type="text"
@@ -49,6 +59,7 @@ const CheckoutForm = () => {
             id="city"
             name="city"
             onChange={setPerson}
+            value={city}
           />
           <input
             type="text"
@@ -56,6 +67,7 @@ const CheckoutForm = () => {
             id="postal_code"
             name="postal_code"
             onChange={setPerson}
+            value={postal_code}
           />
           <input
             type="text"
@@ -63,6 +75,7 @@ const CheckoutForm = () => {
             id="state"
             name="state"
             onChange={setPerson}
+            value={state}
           />
           <input
             type="text"
@@ -70,6 +83,7 @@ const CheckoutForm = () => {
             id="country"
             name="country"
             onChange={setPerson}
+            value={country}
           />
           <input
             type="text"
@@ -77,6 +91,7 @@ const CheckoutForm = () => {
             id="phone"
             name="phone"
             onChange={setPerson}
+            value={phone}
           />
 
           <div className="mt-5 w-full max-w-md flex justify-between">
@@ -87,7 +102,7 @@ const CheckoutForm = () => {
               className="bg-blue-400 hover:bg-blue-600 p-4 rounded-md text-white"
               onClick={handleShippingInfo}
             >
-              Continue to Shipping
+              Continue to Payment
             </button>
           </div>
         </form>

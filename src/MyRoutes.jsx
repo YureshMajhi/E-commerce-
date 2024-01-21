@@ -23,6 +23,8 @@ import AddProduct from "./components/Admin/Product/AddProduct";
 import UpdateProduct from "./components/Admin/Product/UpdateProduct";
 import AdminRoute from "./selectiveRoutes/AdminRoute";
 import CheckoutForm from "./pages/CheckoutForm";
+import PaymentMain from "./pages/PaymentMain";
+import PaymentSuccess from "./pages/PaymentSuccess";
 
 const MyRoutes = () => {
   return (
@@ -41,6 +43,8 @@ const MyRoutes = () => {
           <Route path="signin" element={<SignIn />} />
           <Route path="forgotpassword" element={<ForgetPassword />} />
           <Route path="checkout" element={<CheckoutForm />} />
+          <Route path="payment" element={<PaymentMain />} />
+          <Route path="payment/success" element={<PaymentSuccess />} />
           <Route path="resetpassword/:token" element={<ResetPassword />} />
           <Route
             path="emailverification/:token"
