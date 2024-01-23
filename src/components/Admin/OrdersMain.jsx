@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllOrders } from "../../api/orderApi";
+import { Link } from "react-router-dom";
 
 const OrdersMain = () => {
   const [orders, setOrders] = useState("");
@@ -28,10 +29,10 @@ const OrdersMain = () => {
             <tr>
               <th>S.No.</th>
               <th>Order Id</th>
-              <th>Order Items</th>
               <th>Palced On</th>
               <th>Total Amount</th>
               <th>Status</th>
+              <th>Order Items</th>
             </tr>
           </thead>
           <tbody className="text-center">
@@ -41,7 +42,6 @@ const OrdersMain = () => {
                   <tr key={i} className="hover:bg-gray-200">
                     <td className="text-xl text-gray-700 p-2">{i + 1}</td>
                     <td className="text-xl text-gray-700 p-2">{order._id}</td>
-                    <td className="text-xl text-gray-700 p-2">list</td>
                     <td className="text-xl text-gray-700 p-2">
                       {order.createdAt
                         ? new Date(order.createdAt).toLocaleDateString(
@@ -57,6 +57,9 @@ const OrdersMain = () => {
                     <td className="text-xl text-gray-700 p-2">{order.total}</td>
                     <td className="text-xl text-gray-700 p-2">
                       {order.status}
+                    </td>
+                    <td className="text-xl text-gray-700 p-2 whitespace-nowrap hover:underline">
+                      <Link to={`${order._id}`}>View Details {">"}</Link>
                     </td>
                   </tr>
                 );

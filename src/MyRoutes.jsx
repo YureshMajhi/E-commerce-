@@ -28,6 +28,7 @@ import PaymentSuccess from "./pages/PaymentSuccess";
 import Profile from "./pages/Profile";
 import UsersMain from "./components/Admin/UsersMain";
 import OrdersMain from "./components/Admin/OrdersMain";
+import OrderDetails from "./components/Admin/OrderDetails";
 
 const MyRoutes = () => {
   return (
@@ -38,6 +39,8 @@ const MyRoutes = () => {
           <Route index element={<HomePage />} />
           <Route path="newIn" element={<NewIn />} />
           <Route path="userprofile" element={<Profile />} />
+          {/*View order using userProfile  */}
+          <Route path="userprofile/:id" element={<OrderDetails />} />{" "}
           <Route path="bestsellers" element={<BestSellers />} />
           <Route path="pricing" element={<Pricing />} />
           <Route path="shopAll" element={<ShopAll />} />
@@ -54,7 +57,6 @@ const MyRoutes = () => {
             path="emailverification/:token"
             element={<EmailVerification />}
           />
-
           {/* admin  */}
           <Route path="/" element={<AdminRoute />}>
             <Route path="admin" element={<AdminLayout />}>
@@ -72,6 +74,7 @@ const MyRoutes = () => {
 
               <Route path="user" element={<UsersMain />} />
               <Route path="order" element={<OrdersMain />} />
+              <Route path="order/:id" element={<OrderDetails />} />
             </Route>
           </Route>
         </Route>

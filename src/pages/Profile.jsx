@@ -3,7 +3,7 @@ import { isAuthentiated, logout } from "../api/userApi";
 import { getuserorders } from "../api/orderApi";
 import { SlLogout } from "react-icons/sl";
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { user } = isAuthentiated();
@@ -82,6 +82,12 @@ const Profile = () => {
                       <p>Total Amount: {order.total}</p>
                       <p>Order Status: {order.status}</p>
                       <p>Deliver to: {order.contact_person}</p>
+                      <Link
+                        to={`${order._id}`}
+                        className="hover:font-bold hover:underline"
+                      >
+                        View Details {">"}
+                      </Link>
                     </div>
                   );
                 })
