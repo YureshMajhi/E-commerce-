@@ -130,7 +130,7 @@ const CheckoutForm = () => {
                   </div>
 
                   {/* price */}
-                  <div>${item.price}</div>
+                  <div>Rs. {item.price}</div>
                 </div>
               );
             })}
@@ -156,7 +156,7 @@ const CheckoutForm = () => {
             {/* Total Price */}
             <div className="flex justify-between">
               <p className="text-xl text-gray-500">Total</p>
-              <p className="text-3xl text-gray-800">USD ${total}</p>
+              <p className="text-3xl text-gray-800">NPR Rs.{total}</p>
             </div>
           </div>
         </div>

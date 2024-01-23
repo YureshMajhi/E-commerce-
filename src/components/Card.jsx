@@ -29,7 +29,7 @@ const Card = ({ item }) => {
           {titleLen > 25 ? title.slice(0, 25) + "..." : title}
         </p>
         <p className="text-lg text-gray-700 group-hover:font-semibold">
-          ${price} USD
+          Rs. {price} NPR
         </p>
         <button
           className="bg-[#084240] text-md text-white mt-2 font-semibold py-2 rounded-3xl hover:opacity-80"

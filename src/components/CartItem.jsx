@@ -46,7 +46,7 @@ const CartItem = ({ item, deleteItem }) => {
                   ? item.title.slice(0, 20) + "..."
                   : item.title}
               </p>
-              <p className="my-2 font-light">${item.price}</p>
+              <p className="my-2 font-light">Rs. {item.price}</p>
             </div>
             <div className="flex">
               <div className="flex border-2 border-gray-700 text-gray-700 w-[120px] md:w-[150px] h-[40px] md:h-[50px] justify-around p-2">
@@ -64,7 +64,7 @@ const CartItem = ({ item, deleteItem }) => {
           </div>
         </div>
         <div className="mt-2 text-gray-700">
-          ${(item.price * item.quantity).toFixed(2)}{" "}
+          Rs. {(item.price * item.quantity).toFixed(2)}{" "}
         </div>
       </div>
     </>

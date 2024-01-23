@@ -19,7 +19,7 @@ const Checkout = ({ calculateSubtotal }) => {
           <p className="text-center my-2 text-xl text-[#084240]">
             Subtotal{" "}
             <span className="text-gray-700 ml-4">
-              ${calculateSubtotal()} USD
+              Rs. {calculateSubtotal()} NPR
             </span>
           </p>
           <p className="text-center text-gray-700 my-2 text-sm">
