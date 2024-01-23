@@ -23,3 +23,9 @@ export const getorderdetails = (orderId) => {
     .then((res) => res.json())
     .catch((error) => console.log(error));
 };
+
+export const getAllOrders = () => {
+  return fetch(`${API}/api/order/getorders`)
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};

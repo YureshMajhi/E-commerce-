@@ -26,6 +26,8 @@ import CheckoutForm from "./pages/CheckoutForm";
 import PaymentMain from "./pages/PaymentMain";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import Profile from "./pages/Profile";
+import UsersMain from "./components/Admin/UsersMain";
+import OrdersMain from "./components/Admin/OrdersMain";
 
 const MyRoutes = () => {
   return (
@@ -67,6 +69,9 @@ const MyRoutes = () => {
               <Route path="product" element={<AdminProduct />} />
               <Route path="product/add" element={<AddProduct />} />
               <Route path="product/update/:id" element={<UpdateProduct />} />
+
+              <Route path="user" element={<UsersMain />} />
+              <Route path="order" element={<OrdersMain />} />
             </Route>
           </Route>
         </Route>

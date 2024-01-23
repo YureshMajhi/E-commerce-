@@ -62,7 +62,7 @@ export const forgotPassword = (email) => {
 export const resetPassword = (password, token) => {
   return fetch(`${API}/api/user/resetpassword/${token}`, {
     method: "POST",
-    headers: { 
+    headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ password }),
@@ -76,4 +76,22 @@ export const logout = () => {
   return fetch(`${API}/api/user/signout`)
     .then((response) => response.json())
     .catch((error) => console.log(error));
+};
+
+export const getAllUsers = () => {
+  return fetch(`${API}/api/user/getuserlist`)
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
+
+export const updateRole = (id, role) => {
+  return fetch(`${API}/api/user/updaterole/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ role }),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
 };
