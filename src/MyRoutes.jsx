@@ -29,6 +29,7 @@ import Profile from "./pages/Profile";
 import UsersMain from "./components/Admin/UsersMain";
 import OrdersMain from "./components/Admin/OrdersMain";
 import OrderDetails from "./components/Admin/OrderDetails";
+import CustomerRoute from "./selectiveRoutes/CustomerRoute";
 
 const MyRoutes = () => {
   return (
@@ -38,9 +39,7 @@ const MyRoutes = () => {
           {/* Customer */}
           <Route index element={<HomePage />} />
           <Route path="newIn" element={<NewIn />} />
-          <Route path="userprofile" element={<Profile />} />
-          {/*View order using userProfile  */}
-          <Route path="userprofile/:id" element={<OrderDetails />} />{" "}
+
           <Route path="bestsellers" element={<BestSellers />} />
           <Route path="pricing" element={<Pricing />} />
           <Route path="shopAll" element={<ShopAll />} />
@@ -49,14 +48,25 @@ const MyRoutes = () => {
           <Route path="signup" element={<SignUp />} />
           <Route path="signin" element={<SignIn />} />
           <Route path="forgotpassword" element={<ForgetPassword />} />
-          <Route path="checkout" element={<CheckoutForm />} />
-          <Route path="payment" element={<PaymentMain />} />
-          <Route path="payment/success" element={<PaymentSuccess />} />
+
           <Route path="resetpassword/:token" element={<ResetPassword />} />
           <Route
             path="emailverification/:token"
             element={<EmailVerification />}
           />
+
+          {/* Customer */}
+          <Route path="/" element={<CustomerRoute />}>
+            {/* profile page */}
+            <Route path="userprofile" element={<Profile />} />
+            <Route path="userprofile/:id" element={<OrderDetails />} />
+
+            <Route path="checkout" element={<CheckoutForm />} />
+
+            <Route path="payment" element={<PaymentMain />} />
+            <Route path="payment/success" element={<PaymentSuccess />} />
+          </Route>
+
           {/* admin  */}
           <Route path="/" element={<AdminRoute />}>
             <Route path="admin" element={<AdminLayout />}>

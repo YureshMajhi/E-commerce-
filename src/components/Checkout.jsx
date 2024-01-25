@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { isAuthentiated } from "../api/userApi";
 
 const Checkout = ({ calculateSubtotal }) => {
+  const { user } = isAuthentiated();
   return (
     <>
       <div className="md:flex justify-between">
