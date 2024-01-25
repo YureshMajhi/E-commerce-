@@ -59,7 +59,7 @@ export default function PaymentForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:5173/payment/success",
+        return_url: "https://yurush-store.netlify.app/payment/success",
       },
     });
 
