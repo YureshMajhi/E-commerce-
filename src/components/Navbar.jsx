@@ -122,7 +122,7 @@ const Navbar = () => {
 
             {/* Menu */}
             <ul className="hidden lg:flex font-light text-sm text-gray-700">
-              <li
+              {/* <li
                 className={`p-4 tracking-wide hover:underline hover:text-black hover:font-normal ${
                   menuClick == "newIn" ? "font-normal text-black underline" : ""
                 }`}
@@ -130,8 +130,8 @@ const Navbar = () => {
                 <Link onClick={() => handleMenuClick("newIn")} to="/newIn">
                   New In
                 </Link>
-              </li>
-              <li
+              </li> */}
+              {/* <li
                 className={`p-4 tracking-wide hover:underline hover:text-black hover:font-normal ${
                   menuClick == "bestsellers"
                     ? "font-normal text-black underline"
@@ -144,7 +144,7 @@ const Navbar = () => {
                 >
                   Bestsellers
                 </Link>
-              </li>
+              </li> */}
               <li
                 className={`p-4 tracking-wide hover:underline hover:text-black hover:font-normal ${
                   menuClick == "pricing"

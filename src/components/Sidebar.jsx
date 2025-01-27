@@ -19,21 +19,21 @@ const Sidebar = ({ nav, handleClick }) => {
           ${nav ? "translate-x-[-100%] duration-300" : "translate-x-0"}`}
       >
         <Link to="/newIn">
-          <li
+          {/* <li
             onClick={handleClick}
             className="py-4 pl-6 my-1 hover:bg-gray-200 hover:underline hover:font-semibold"
           >
             New In
-          </li>
+          </li> */}
         </Link>
         <Link to="bestsellers">
           {" "}
-          <li
+          {/* <li
             onClick={handleClick}
             className="py-4 pl-6 my-1 hover:bg-gray-200 hover:underline hover:font-semibold"
           >
             Bestsellers
-          </li>
+          </li> */}
         </Link>
         <Link to="pricing">
           <li
